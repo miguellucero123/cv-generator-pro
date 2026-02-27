@@ -258,6 +258,63 @@ export function useEditor() {
   history.value.push(JSON.stringify(cvData))
   historyIndex.value = 0
 
+  // Helper functions for test compatibility
+  const updatePersonalInfo = (info) => {
+    Object.keys(info).forEach((key) => {
+      updateField('personal', key, info[key])
+    })
+  }
+
+  const addExperience = (experience) => {
+    addArrayItem('experiencia', experience)
+  }
+
+  const removeExperience = (index) => {
+    removeArrayItem('experiencia', index)
+  }
+
+  const addEducation = (education) => {
+    addArrayItem('educacion', education)
+  }
+
+  const removeEducation = (index) => {
+    removeArrayItem('educacion', index)
+  }
+
+  const addSkill = (skill, category = 'programacion') => {
+    if (!cvData.competencias[category]) {
+      cvData.competencias[category] = { skills: [] }
+    }
+    if (!cvData.competencias[category].skills) {
+      cvData.competencias[category].skills = []
+    }
+    cvData.competencias[category].skills.push(skill)
+    hasChanges.value = true
+  }
+
+  const removeSkill = (skill, category = 'programacion') => {
+    if (cvData.competencias[category]?.skills) {
+      const index = cvData.competencias[category].skills.findIndex((s) => s === skill)
+      if (index !== -1) {
+        cvData.competencias[category].skills.splice(index, 1)
+        hasChanges.value = true
+      }
+    }
+  }
+
+  const setTemplate = (template) => {
+    cvData.template = template
+    hasChanges.value = true
+  }
+
+  const saveCV = async () => {
+    return await saveChanges()
+  }
+
+  const resetCV = () => {
+    resetToDefault()
+  }
+
   return {
     cvData,
     isEditing,
@@ -282,7 +339,18 @@ export function useEditor() {
     resetToDefault,
     exportData,
     importData,
-    loadCvData
+    loadCvData,
+    // Test-compatible API
+    updatePersonalInfo,
+    addExperience,
+    removeExperience,
+    addEducation,
+    removeEducation,
+    addSkill,
+    removeSkill,
+    setTemplate,
+    saveCV,
+    resetCV
   }
 }
 

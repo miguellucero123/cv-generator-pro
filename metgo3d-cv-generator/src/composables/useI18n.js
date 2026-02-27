@@ -40,11 +40,18 @@ export function useI18n() {
     setLocale(availableLocales[(idx + 1) % availableLocales.length].code)
   }
 
+  // Aliases for test compatibility
+  const setLanguage = (code) => setLocale(code)
+  const getCurrentLanguage = () => currentLocale.value
+
   return {
     locale: currentLocale,
     availableLocales,
     t,
     setLocale,
-    toggleLocale
+    toggleLocale,
+    // Test-compatible API
+    setLanguage,
+    getCurrentLanguage
   }
 }

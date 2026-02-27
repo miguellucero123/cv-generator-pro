@@ -46,13 +46,14 @@ describe('useEditor', () => {
     updatePersonalInfo(personalInfo);
     
     // Verificar que se actualizó (estructura según tu implementación)
-    expect(cvData.personalInfo).toBeDefined();
+    expect(cvData.personal).toBeDefined();
+    expect(cvData.personal.name).toBe('Juan Pérez');
   });
 
   it('debería agregar experiencia laboral', () => {
     const { cvData, addExperience } = useEditor();
     
-    const initialCount = cvData.experience?.length || 0;
+    const initialCount = cvData.experiencia?.length || 0;
     
     addExperience({
       company: 'Tech Company',
@@ -61,7 +62,7 @@ describe('useEditor', () => {
       endDate: '2023-12-31'
     });
     
-    expect(cvData.experience.length).toBe(initialCount + 1);
+    expect(cvData.experiencia.length).toBe(initialCount + 1);
   });
 
   it('debería remover experiencia laboral', () => {
@@ -73,7 +74,7 @@ describe('useEditor', () => {
       position: 'Developer'
     });
     
-    const countBefore = cvData.experience.length;
+    const countBefore = cvData.experiencia.length;
     
     // Remover la última (índice 0)
     removeExperience(0);
@@ -85,7 +86,7 @@ describe('useEditor', () => {
   it('debería agregar educación', () => {
     const { cvData, addEducation } = useEditor();
     
-    const initialCount = cvData.education?.length || 0;
+    const initialCount = cvData.educacion?.length || 0;
     
     addEducation({
       school: 'University',
@@ -95,28 +96,28 @@ describe('useEditor', () => {
       endDate: '2020-12-31'
     });
     
-    expect(cvData.education.length).toBe(initialCount + 1);
+    expect(cvData.educacion.length).toBe(initialCount + 1);
   });
 
   it('debería agregar habilidades', () => {
     const { cvData, addSkill } = useEditor();
     
-    const initialCount = cvData.skills?.length || 0;
+    const initialCount = cvData.competencias?.programacion?.skills?.length || 0;
     
     addSkill('JavaScript');
     addSkill('Vue.js');
     addSkill('Node.js');
     
-    expect(cvData.skills.length).toBe(initialCount + 3);
+    expect(cvData.competencias.programacion.skills.length).toBe(initialCount + 3);
   });
 
   it('debería remover habilidades', () => {
     const { cvData, addSkill, removeSkill } = useEditor();
     
     addSkill('Python');
-    const countBefore = cvData.skills.length;
+    const countBefore = cvData.competencias.programacion.skills.length;
     
-    removeSkill(countBefore - 1);
+    removeSkill('Python');
     
     expect(typeof removeSkill).toBe('function');
   });

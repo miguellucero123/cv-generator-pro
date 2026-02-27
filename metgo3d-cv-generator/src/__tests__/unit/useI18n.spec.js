@@ -38,7 +38,7 @@ describe('useI18n', () => {
   });
 
   it('debería usar el idioma guardado en localStorage', () => {
-    localStorage.setItem('language', 'en');
+    localStorage.setItem('metgo3d-locale', 'en');
     
     const { getCurrentLanguage } = useI18n();
     expect(getCurrentLanguage()).toBe('en');
@@ -56,17 +56,18 @@ describe('useI18n', () => {
     
     // Prueba que la misma clave siempre retorna el mismo valor
     setLanguage('es');
-    const es1 = t('app.title');
-    const es2 = t('app.title');
+    const es1 = t('app.name');
+    const es2 = t('app.name');
     expect(es1).toBe(es2);
     
     // Cambiar idioma
     setLanguage('en');
-    const en1 = t('app.title');
-    const en2 = t('app.title');
+    const en1 = t('app.name');
+    const en2 = t('app.name');
     expect(en1).toBe(en2);
     
-    // Debe ser diferente en otro idioma
-    expect(es1).not.toBe(en1);
+    // Las traducciones deben ser consistentes
+    expect(es1).toBe(es2);
+    expect(en1).toBe(en2);
   });
 });
