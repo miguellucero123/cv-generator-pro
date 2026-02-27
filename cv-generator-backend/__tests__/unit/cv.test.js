@@ -1,6 +1,6 @@
-/**
+﻿/**
  * Tests para CV Controller
- * Pruebas básicas de CRUD de CVs
+ * Pruebas bÃ¡sicas de CRUD de CVs
  */
 
 describe('CV Controller - CRUD Operations', () => {
@@ -21,8 +21,8 @@ describe('CV Controller - CRUD Operations', () => {
     next = jest.fn();
   });
 
-  describe('Validación de CV', () => {
-    test('debería validar estructura básica de CV', () => {
+  describe('ValidaciÃ³n de CV', () => {
+    test('deberÃ­a validar estructura bÃ¡sica de CV', () => {
       const cv = {
         title: 'Mi CV',
         personalInfo: {
@@ -42,7 +42,7 @@ describe('CV Controller - CRUD Operations', () => {
       expect(cv.personalInfo).toHaveProperty('email');
     });
 
-    test('debería rechazar CV sin título', () => {
+    test('deberÃ­a rechazar CV sin tÃ­tulo', () => {
       const cv = {
         personalInfo: { name: 'John' }
         // Falta title
@@ -51,7 +51,7 @@ describe('CV Controller - CRUD Operations', () => {
       expect(cv).not.toHaveProperty('title');
     });
 
-    test('debería validar email en personalInfo', () => {
+    test('deberÃ­a validar email en personalInfo', () => {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       const cv = {
@@ -65,7 +65,7 @@ describe('CV Controller - CRUD Operations', () => {
   });
 
   describe('Estructura de Datos', () => {
-    test('debería permitir múltiples trabajos', () => {
+    test('deberÃ­a permitir mÃºltiples trabajos', () => {
       const cv = {
         experience: [
           {
@@ -87,7 +87,7 @@ describe('CV Controller - CRUD Operations', () => {
       expect(cv.experience).toHaveLength(2);
     });
 
-    test('debería permitir múltiples educaciones', () => {
+    test('deberÃ­a permitir mÃºltiples educaciones', () => {
       const cv = {
         education: [
           {
@@ -107,7 +107,7 @@ describe('CV Controller - CRUD Operations', () => {
       expect(cv.education).toHaveLength(2);
     });
 
-    test('debería permitir múltiples habilidades', () => {
+    test('deberÃ­a permitir mÃºltiples habilidades', () => {
       const cv = {
         skills: [
           { name: 'JavaScript', level: 'Expert' },
@@ -123,7 +123,7 @@ describe('CV Controller - CRUD Operations', () => {
   });
 
   describe('Respuestas API', () => {
-    test('debería retornar CV creado con ID', () => {
+    test('deberÃ­a retornar CV creado con ID', () => {
       const createdCV = {
         _id: '507f1f77bcf86cd799439011',
         title: 'Mi CV',
@@ -136,7 +136,7 @@ describe('CV Controller - CRUD Operations', () => {
       expect(createdCV.userId).toBe('123');
     });
 
-    test('debería retornar lista de CVs del usuario', () => {
+    test('deberÃ­a retornar lista de CVs del usuario', () => {
       const cvList = [
         {
           _id: '507f1f77bcf86cd799439011',
@@ -145,7 +145,7 @@ describe('CV Controller - CRUD Operations', () => {
         },
         {
           _id: '507f1f77bcf86cd799439012',
-          title: 'CV Público',
+          title: 'CV PÃºblico',
           isPublic: true
         }
       ];
@@ -156,7 +156,7 @@ describe('CV Controller - CRUD Operations', () => {
       expect(cvList[1]).toHaveProperty('isPublic');
     });
 
-    test('debería retornar CV actualizado', () => {
+    test('deberÃ­a retornar CV actualizado', () => {
       const updatedCV = {
         _id: '507f1f77bcf86cd799439011',
         title: 'CV Actualizado',
@@ -167,7 +167,7 @@ describe('CV Controller - CRUD Operations', () => {
       expect(updatedCV.title).toBe('CV Actualizado');
     });
 
-    test('debería confirmar eliminación de CV', () => {
+    test('deberÃ­a confirmar eliminaciÃ³n de CV', () => {
       const response = {
         success: true,
         message: 'CV eliminado correctamente',
@@ -182,7 +182,7 @@ describe('CV Controller - CRUD Operations', () => {
   });
 
   describe('Errores Comunes', () => {
-    test('debería retornar 404 si CV no existe', () => {
+    test('deberÃ­a retornar 404 si CV no existe', () => {
       const errorResponse = {
         statusCode: 404,
         message: 'CV no encontrado'
@@ -191,7 +191,7 @@ describe('CV Controller - CRUD Operations', () => {
       expect(errorResponse.statusCode).toBe(404);
     });
 
-    test('debería retornar 401 si usuario no es propietario', () => {
+    test('deberÃ­a retornar 401 si usuario no es propietario', () => {
       const errorResponse = {
         statusCode: 401,
         message: 'No tienes permiso para editar este CV'
@@ -200,7 +200,7 @@ describe('CV Controller - CRUD Operations', () => {
       expect(errorResponse.statusCode).toBe(401);
     });
 
-    test('debería validar que currentJob tiene datos requeridos', () => {
+    test('deberÃ­a validar que currentJob tiene datos requeridos', () => {
       const job = {
         company: 'Tech Corp'
         // Falta position, startDate
@@ -211,18 +211,20 @@ describe('CV Controller - CRUD Operations', () => {
     });
   });
 
-  describe('Paginación (si existe)', () => {
-    test('debería soportar limit en lista de CVs', () => {
+  describe('PaginaciÃ³n (si existe)', () => {
+    test('deberÃ­a soportar limit en lista de CVs', () => {
       const query = { limit: 10, skip: 0 };
 
       expect(query).toHaveProperty('limit');
       expect(query.limit).toBe(10);
     });
 
-    test('debería soportar skip para paginación', () => {
+    test('deberÃ­a soportar skip para paginaciÃ³n', () => {
       const query = { limit: 10, skip: 20 };
 
       expect(query.skip).toBe(20);
     });
   });
 });
+
+

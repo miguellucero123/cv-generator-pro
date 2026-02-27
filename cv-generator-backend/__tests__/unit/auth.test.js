@@ -1,6 +1,6 @@
-/**
+﻿/**
  * Tests para Auth Controller
- * Pruebas básicas de autenticación
+ * Pruebas bÃ¡sicas de autenticaciÃ³n
  */
 
 describe('Auth Controller - Basic Tests', () => {
@@ -24,7 +24,7 @@ describe('Auth Controller - Basic Tests', () => {
   });
 
   describe('Middleware - Authentication', () => {
-    test('debería rechazar si no hay token', async () => {
+    test('deberÃ­a rechazar si no hay token', async () => {
       const { protect } = require('../../src/middleware/auth');
 
       await protect(req, res, next);
@@ -38,22 +38,22 @@ describe('Auth Controller - Basic Tests', () => {
       );
     });
 
-    test('debería buscar token en header Authorization', async () => {
+    test('deberÃ­a buscar token en header Authorization', async () => {
       req.headers.authorization = 'Bearer valid-token';
 
       // Este test verifica que el middleware intenta procesar el token
-      // En producción, sería validado con JWT
+      // En producciÃ³n, serÃ­a validado con JWT
       const { protect } = require('../../src/middleware/auth');
 
-      // El middleware debería intentar verificar el token
-      // (en este test, fallará porque no es un JWT válido, pero eso es esperado)
+      // El middleware deberÃ­a intentar verificar el token
+      // (en este test, fallarÃ¡ porque no es un JWT vÃ¡lido, pero eso es esperado)
       await protect(req, res, next);
 
-      // Debería intentar procesar el token Bearer
+      // DeberÃ­a intentar procesar el token Bearer
       expect(res.status).toHaveBeenCalled();
     });
 
-    test('debería buscar token en cookies si no hay header', async () => {
+    test('deberÃ­a buscar token en cookies si no hay header', async () => {
       req.cookies.token = 'valid-token-from-cookie';
       delete req.headers.authorization;
 
@@ -61,13 +61,13 @@ describe('Auth Controller - Basic Tests', () => {
 
       await protect(req, res, next);
 
-      // El middleware debería procesar el token de la cookie
+      // El middleware deberÃ­a procesar el token de la cookie
       expect(res.status).toHaveBeenCalled();
     });
   });
 
-  describe('Utils - Validación', () => {
-    test('debería validar email correctamente', () => {
+  describe('Utils - ValidaciÃ³n', () => {
+    test('deberÃ­a validar email correctamente', () => {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       expect(emailRegex.test('user@example.com')).toBe(true);
@@ -75,7 +75,7 @@ describe('Auth Controller - Basic Tests', () => {
       expect(emailRegex.test('user@domain')).toBe(false);
     });
 
-    test('debería validar contraseña mínima', () => {
+    test('deberÃ­a validar contraseÃ±a mÃ­nima', () => {
       const validatePassword = (password) => !!(password && password.length >= 6);
 
       expect(validatePassword('123456')).toBe(true);
@@ -85,10 +85,10 @@ describe('Auth Controller - Basic Tests', () => {
   });
 
   describe('Error Handling', () => {
-    test('debería manejar errores de validación', () => {
+    test('deberÃ­a manejar errores de validaciÃ³n', () => {
       const errors = [
-        { field: 'email', message: 'Email inválido' },
-        { field: 'password', message: 'Contraseña muy corta' }
+        { field: 'email', message: 'Email invÃ¡lido' },
+        { field: 'password', message: 'ContraseÃ±a muy corta' }
       ];
 
       // Verificar que los errores se estructuran correctamente
@@ -97,7 +97,7 @@ describe('Auth Controller - Basic Tests', () => {
       expect(errors[0]).toHaveProperty('message');
     });
 
-    test('debería retornar error con código de estado correcto', () => {
+    test('deberÃ­a retornar error con cÃ³digo de estado correcto', () => {
       const mockError = {
         statusCode: 400,
         message: 'Bad Request'
@@ -117,7 +117,7 @@ describe('Auth Controller - Basic Tests', () => {
   });
 
   describe('Respuesta - Formato', () => {
-    test('debería retornar respuesta con formato correcto', () => {
+    test('deberÃ­a retornar respuesta con formato correcto', () => {
       const response = {
         success: true,
         message: 'Login exitoso',
@@ -137,12 +137,12 @@ describe('Auth Controller - Basic Tests', () => {
       expect(response.data).toHaveProperty('user');
     });
 
-    test('debería respetar estructura de error', () => {
+    test('deberÃ­a respetar estructura de error', () => {
       const errorResponse = {
         success: false,
-        message: 'Error en autenticación',
+        message: 'Error en autenticaciÃ³n',
         errors: [
-          { field: 'password', message: 'Contraseña incorrecta' }
+          { field: 'password', message: 'ContraseÃ±a incorrecta' }
         ]
       };
 
@@ -151,3 +151,5 @@ describe('Auth Controller - Basic Tests', () => {
     });
   });
 });
+
+

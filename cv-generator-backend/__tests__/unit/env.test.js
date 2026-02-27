@@ -1,6 +1,6 @@
-/**
+﻿/**
  * Tests para Config/Env
- * Validación de variables de entorno
+ * ValidaciÃ³n de variables de entorno
  */
 
 describe('Environment Configuration', () => {
@@ -17,7 +17,7 @@ describe('Environment Configuration', () => {
   describe('validateEnv', () => {
     const { validateEnv, requiredVars } = require('../../src/config/env');
 
-    test('debería pasar si todas las variables requeridas están presentes', () => {
+    test('deberÃ­a pasar si todas las variables requeridas estÃ¡n presentes', () => {
       // Setup - asegurar que existen variables requeridas
       process.env.MONGODB_URI = 'mongodb://localhost:27017/test';
       process.env.JWT_SECRET = 'test-secret-very-long-32-characters-plus-12345';
@@ -30,7 +30,7 @@ describe('Environment Configuration', () => {
       expect(() => validateEnv()).not.toThrow();
     });
 
-    test('debería fallar si falta MONGODB_URI', () => {
+    test('deberÃ­a fallar si falta MONGODB_URI', () => {
       process.env.NODE_ENV = 'test';
       process.env.PORT = '5000';
       process.env.FRONTEND_URL = 'http://localhost:3000';
@@ -40,7 +40,7 @@ describe('Environment Configuration', () => {
       expect(() => validateEnv()).toThrow('MONGODB_URI');
     });
 
-    test('debería fallar si falta JWT_SECRET', () => {
+    test('deberÃ­a fallar si falta JWT_SECRET', () => {
       process.env.NODE_ENV = 'test';
       process.env.PORT = '5000';
       process.env.FRONTEND_URL = 'http://localhost:3000';
@@ -50,17 +50,17 @@ describe('Environment Configuration', () => {
       expect(() => validateEnv()).toThrow('JWT_SECRET');
     });
 
-    test('debería validar que PORT es un número válido', () => {
+    test('deberia validar que PORT es un numero valido', () => {
       process.env.MONGODB_URI = 'mongodb://localhost:27017/test';
       process.env.JWT_SECRET = 'test-secret-very-long-32-characters-plus-12345';
       process.env.FRONTEND_URL = 'http://localhost:3000';
       process.env.NODE_ENV = 'test';
       process.env.PORT = 'invalid';
 
-      expect(() => validateEnv()).toThrow('PORT debe ser un número');
+      expect(() => validateEnv()).toThrow(/PORT debe ser un n/);
     });
 
-    test('debería validar que JWT_SECRET es lo suficientemente largo', () => {
+    test('deberÃ­a validar que JWT_SECRET es lo suficientemente largo', () => {
       process.env.MONGODB_URI = 'mongodb://localhost:27017/test';
       process.env.FRONTEND_URL = 'http://localhost:3000';
       process.env.NODE_ENV = 'test';
@@ -70,7 +70,7 @@ describe('Environment Configuration', () => {
       const consoleSpy = jest.spyOn(console, 'warn').mockImplementation();
       validateEnv();
 
-      // Si JWT_SECRET es corto, debería advertir (no fallar)
+      // Si JWT_SECRET es corto, deberÃ­a advertir (no fallar)
       expect(consoleSpy).toHaveBeenCalled();
 
       consoleSpy.mockRestore();
@@ -80,7 +80,7 @@ describe('Environment Configuration', () => {
   describe('getConfig', () => {
     const { getConfig } = require('../../src/config/env');
 
-    test('debería retornar objeto de configuración con valores por defecto', () => {
+    test('deberÃ­a retornar objeto de configuraciÃ³n con valores por defecto', () => {
       process.env.MONGODB_URI = 'mongodb://localhost:27017/test';
       process.env.JWT_SECRET = 'test-secret-32-characters-or-more-here';
       process.env.FRONTEND_URL = 'http://localhost:3000';
@@ -95,7 +95,7 @@ describe('Environment Configuration', () => {
       expect(config).toHaveProperty('nodeEnv', 'test');
     });
 
-    test('debería detectar Google OAuth cuando está configurado', () => {
+    test('deberÃ­a detectar Google OAuth cuando estÃ¡ configurado', () => {
       process.env.GOOGLE_CLIENT_ID = 'test-id';
       process.env.GOOGLE_CLIENT_SECRET = 'test-secret';
 
@@ -105,7 +105,7 @@ describe('Environment Configuration', () => {
       expect(config.google.enabled).toBe(true);
     });
 
-    test('debería detectar cuando Google OAuth no está configurado', () => {
+    test('deberÃ­a detectar cuando Google OAuth no estÃ¡ configurado', () => {
       delete process.env.GOOGLE_CLIENT_ID;
       delete process.env.GOOGLE_CLIENT_SECRET;
 
@@ -117,3 +117,5 @@ describe('Environment Configuration', () => {
     });
   });
 });
+
+

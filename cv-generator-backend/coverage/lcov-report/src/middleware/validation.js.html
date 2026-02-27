@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">53.84% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>7/13</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">58.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>7/12</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -114,14 +114,11 @@
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,6 +128,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -142,12 +140,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,18 +156,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { body, param, validationResult } = <span class="cstat-no" title="statement not covered" >require('express-validator');</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { body, param, validationResult } = require('express-validator');
 &nbsp;
-<span class="cstat-no" title="statement not covered" >exports.handleValidationErrors = <span class="fstat-no" title="function not covered" >(r</span>eq, res, next) =&gt; {</span>
+exports.handleValidationErrors = <span class="fstat-no" title="function not covered" >(r</span>eq, res, next) =&gt; {
   const errors = <span class="cstat-no" title="statement not covered" >validationResult(req);</span>
 <span class="cstat-no" title="statement not covered" >  if (!errors.isEmpty()) {</span>
 <span class="cstat-no" title="statement not covered" >    return res.status(400).json({</span>
@@ -179,7 +179,7 @@
 <span class="cstat-no" title="statement not covered" >  next();</span>
 };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >exports.validateRegister = [</span>
+exports.validateRegister = [
   body('email').trim().isEmail().withMessage('Email inválido').normalizeEmail(),
   body('password')
     .isLength({ min: 6 })
@@ -193,12 +193,12 @@
     .escape()
 ];
 &nbsp;
-<span class="cstat-no" title="statement not covered" >exports.validateLogin = [</span>
+exports.validateLogin = [
   body('email').trim().isEmail().withMessage('Email inválido').normalizeEmail(),
   body('password').notEmpty().withMessage('La contraseña es requerida')
 ];
 &nbsp;
-<span class="cstat-no" title="statement not covered" >exports.validateCV = [</span>
+exports.validateCV = [
   body('title').optional().trim().isLength({ min: 1, max: 100 }).withMessage('El título debe tener entre 1 y 100 caracteres'),
   body('personalInfo.firstName').optional().trim().isLength({ max: 50 }).withMessage('Nombre muy largo'),
   body('personalInfo.lastName').optional().trim().isLength({ max: 50 }).withMessage('Apellido muy largo'),
@@ -207,11 +207,11 @@
   body('design.template').optional().isIn(['modern', 'classic', 'creative', 'minimal', 'executive', 'tech']).withMessage('Plantilla inválida')
 ];
 &nbsp;
-<span class="cstat-no" title="statement not covered" >exports.validateObjectId = <span class="fstat-no" title="function not covered" >(p</span>aramName = <span class="branch-0 cbranch-no" title="branch not covered" >'id')</span> =&gt; <span class="cstat-no" title="statement not covered" >[</span></span>
+exports.validateObjectId = <span class="fstat-no" title="function not covered" >(p</span>aramName = <span class="branch-0 cbranch-no" title="branch not covered" >'id')</span> =&gt; <span class="cstat-no" title="statement not covered" >[</span>
   param(paramName).isMongoId().withMessage('ID inválido')
 ];
 &nbsp;
-<span class="cstat-no" title="statement not covered" >exports.validateShare = [</span>
+exports.validateShare = [
   body('isPublic').optional().isBoolean().withMessage('isPublic debe ser booleano'),
   body('password').optional().isLength({ min: 4 }).withMessage('La contraseña debe tener al menos 4 caracteres'),
   body('expiresAt').optional().isISO8601().withMessage('Fecha de expiración inválida')
@@ -223,7 +223,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-27T02:11:41.462Z
+                at 2026-02-27T03:22:15.867Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
