@@ -1,0 +1,155 @@
+﻿npx : [33mThe CJS build of Vite's Node API is deprecated. See 
+https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for 
+more details.[39m
+En línea: 1 Carácter: 1
++ npx vitest run --reporter=verbose 2>&1 | Out-File -FilePath test-outp ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([33mThe CJS bu...e details.[39m 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[7m[1m[36m RUN [39m[22m[27m [36mv1.6.1[39m [90mD:/One_Drive_AIEP/OneDrive - Aiep/Repo_AIEP/cv-generator-pro/metgo3d-cv-generator[39m
+
+ [32mÔ£ô[39m src/__tests__/unit/useLocalStorage.spec.js[2m > [22museLocalStorage[2m > [22mdeber├¡a guardar un valor en localStorage
+ [32mÔ£ô[39m src/__tests__/unit/useLocalStorage.spec.js[2m > [22museLocalStorage[2m > [22mdeber├¡a obtener un valor de localStorage
+ [32mÔ£ô[39m src/__tests__/unit/useLocalStorage.spec.js[2m > [22museLocalStorage[2m > [22mdeber├¡a retornar null para claves que no existen
+ [32mÔ£ô[39m src/__tests__/unit/useLocalStorage.spec.js[2m > [22museLocalStorage[2m > [22mdeber├¡a eliminar un valor de localStorage
+ [32mÔ£ô[39m src/__tests__/unit/useLocalStorage.spec.js[2m > [22museLocalStorage[2m > [22mdeber├¡a limpiar todo localStorage
+ [32mÔ£ô[39m src/__tests__/unit/useLocalStorage.spec.js[2m > [22museLocalStorage[2m > [22mdeber├¡a manejar valores complejos correctamente
+ [32mÔ£ô[39m src/__tests__/unit/useI18n.spec.js[2m > [22museI18n[2m > [22mdeber├¡a retornar funciones de i18n
+ [32mÔ£ô[39m src/__tests__/unit/useI18n.spec.js[2m > [22museI18n[2m > [22mdeber├¡a traducir strings en espa├▒ol por defecto
+ [32mÔ£ô[39m src/__tests__/unit/useI18n.spec.js[2m > [22museI18n[2m > [22mdeber├¡a cambiar de idioma correctamente
+ [32mÔ£ô[39m src/__tests__/unit/useI18n.spec.js[2m > [22museI18n[2m > [22mdeber├¡a usar el idioma guardado en localStorage
+ [32mÔ£ô[39m src/__tests__/unit/useI18n.spec.js[2m > [22museI18n[2m > [22mdeber├¡a usar idioma por defecto si no est├í configurado
+ [32mÔ£ô[39m src/__tests__/unit/useI18n.spec.js[2m > [22museI18n[2m > [22mdeber├¡a mantener las traducciones consistentes
+ [32mÔ£ô[39m src/__tests__/unit/useEditor.spec.js[2m > [22museEditor[2m > [22mdeber├¡a retornar composable con funciones esperadas
+ [32mÔ£ô[39m src/__tests__/unit/useEditor.spec.js[2m > [22museEditor[2m > [22mdeber├¡a actualizar informaci├│n personal
+ [32mÔ£ô[39m src/__tests__/unit/useEditor.spec.js[2m > [22museEditor[2m > [22mdeber├¡a agregar experiencia laboral
+ [32mÔ£ô[39m src/__tests__/unit/useEditor.spec.js[2m > [22museEditor[2m > [22mdeber├¡a remover experiencia laboral
+ [32mÔ£ô[39m src/__tests__/unit/useEditor.spec.js[2m > [22museEditor[2m > [22mdeber├¡a agregar educaci├│n
+ [32mÔ£ô[39m src/__tests__/unit/useEditor.spec.js[2m > [22museEditor[2m > [22mdeber├¡a agregar habilidades
+ [32mÔ£ô[39m src/__tests__/unit/useEditor.spec.js[2m > [22museEditor[2m > [22mdeber├¡a remover habilidades
+ [32mÔ£ô[39m src/__tests__/unit/useEditor.spec.js[2m > [22museEditor[2m > [22mdeber├¡a cambiar plantilla
+ [32mÔ£ô[39m src/__tests__/unit/useEditor.spec.js[2m > [22museEditor[2m > [22mdeber├¡a resetear CV al estado inicial
+ [32mÔ£ô[39m src/__tests__/unit/useEditor.spec.js[2m > [22museEditor[2m > [22mdeber├¡a guardar CV
+[90mstderr[2m | src/__tests__/unit/useEditor.spec.js[2m > 
+[22m[2museEditor[2m > [22m[2mdeber├¡a resetear CV al estado 
+inicial[22m[39m
+Error: Not implemented: window.confirm
+    at module.exports (D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator
+-pro\metgo3d-cv-generator\node_modules\jsdom\lib\jsdom\browser\not-implemented.
+js:9:17)
+    at D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator-pro\metgo3d-cv-
+generator\node_modules\jsdom\lib\jsdom\browser\Window.js:898:7
+    at resetToDefault (D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator
+-pro\metgo3d-cv-generator\src\composables\useEditor.js:154:7)
+    at resetCV (D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator-pro\me
+tgo3d-cv-generator\src\composables\useEditor.js:315:5)
+    at D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator-pro\metgo3d-cv-
+generator\src\__tests__\unit\useEditor.spec.js:145:5
+    at file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-generator-pro
+/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:135:14
+    at file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-generator-pro
+/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:60:26
+    at runTest (file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-gene
+rator-pro/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:781:17
+)
+    at runSuite (file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-gen
+erator-pro/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:909:1
+5)
+    at runSuite (file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-gen
+erator-pro/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:909:1
+5) [90mundefined[39m
+
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mAuthentication state[2m > [22mshould initialize with no user
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mAuthentication state[2m > [22mshould check logged in status based on token
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mUser registration[2m > [22mshould register new user successfully
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mUser registration[2m > [22mshould handle registration errors
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mUser login[2m > [22mshould login user with credentials
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mUser login[2m > [22mshould handle login failure
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mUser logout[2m > [22mshould logout and clear user data
+ [31m├ù[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mUser logout[2m > [22mshould clear user data even if logout request fails
+[31m   ÔåÆ Server error[39m
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mGet current user[2m > [22mshould fetch current user data
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mUpdate profile[2m > [22mshould update user profile
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mChange password[2m > [22mshould change password and update token
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mPassword recovery[2m > [22mshould send forgot password request
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mPassword recovery[2m > [22mshould reset password with token
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mToken management[2m > [22mshould get token from localStorage
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mToken management[2m > [22mshould return null when no token exists
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mToken management[2m > [22mshould set token in localStorage
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mToken management[2m > [22mshould remove token when setting null
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mToken management[2m > [22mshould check authentication status
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mHTTP Methods[2m > [22mshould make GET request
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mHTTP Methods[2m > [22mshould make POST request with body
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mHTTP Methods[2m > [22mshould make PUT request with body
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mHTTP Methods[2m > [22mshould make PATCH request
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mHTTP Methods[2m > [22mshould make DELETE request
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mAuthentication headers[2m > [22mshould include Authorization header when token exists
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mAuthentication headers[2m > [22mshould not include Authorization header without token
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mLoading state[2m > [22mshould set loading to true during request
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mError handling[2m > [22mshould handle HTTP error responses
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mError handling[2m > [22mshould handle network errors
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mError handling[2m > [22mshould handle 401 token expired
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mError handling[2m > [22mshould clear error manually
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mResponse handling[2m > [22mshould parse JSON responses
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mResponse handling[2m > [22mshould handle non-JSON responses
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mResponse handling[2m > [22mshould handle FormData without JSON stringifying
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mAPI URL configuration[2m > [22mshould use configured API URL
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js[2m > [22museAPI[2m > [22mAPI URL configuration[2m > [22mshould handle absolute URLs
+[90mstderr[2m | src/__tests__/unit/useAPI.spec.js[2m > [22m[2museAPI[2m 
+> [22m[2mError handling[2m > [22m[2mshould clear error manually[22m[39m
+[Vue warn] Set operation on key "value" failed: target is readonly. RefImpl {
+  dep: Dep {
+    computed: [90mundefined[39m,
+    version: [33m0[39m,
+    activeLink: [90mundefined[39m,
+    subs: [90mundefined[39m,
+    map: [90mundefined[39m,
+    key: [90mundefined[39m,
+    sc: [33m0[39m,
+    __v_skip: [33mtrue[39m,
+    subsHead: [90mundefined[39m
+  },
+  __v_isRef: [33mtrue[39m,
+  __v_isShallow: [33mfalse[39m,
+  _rawValue: [1mnull[22m,
+  _value: [1mnull[22m
+}
+
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mInitialize from token[2m > [22mshould fetch user data when token exists
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mInitialize from token[2m > [22mshould clear token on init failure
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mInitialize from token[2m > [22mshould not fetch user if already loaded
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mToken management methods[2m > [22mshould expose setToken method
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mToken management methods[2m > [22mshould expose getToken method
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mLoading and error states[2m > [22mshould expose loading state from api
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js[2m > [22museAuthAPI[2m > [22mLoading and error states[2m > [22mshould expose error state from api
+
+[31mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[1m[7m Failed Tests 1 
+[27m[22mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/__tests__/unit/useAuthAPI.spec.js[2m > 
+[22museAuthAPI[2m > [22mUser logout[2m > [22mshould clear user data even 
+if logout request fails
+[31m[1mError[22m: Server error[39m
+[36m [2mÔØ»[22m src/__tests__/unit/useAuthAPI.spec.js:[2m124:38[22m[39m
+    [90m122| [39m
+    [90m123| [39m    [34mit[39m([32m'should clear user data even if 
+logout request fails'[39m[33m,[39m [35masync[39m ()ÔÇª
+    [90m124| [39m      
+mockAPI[33m.[39mpost[33m.[39m[34mmockRejectedValue[39m([35mnew[39m 
+[33mError[39m([32m'Server error'[39m))[33m;[39m
+    [90m   | [39m                                     [31m^[39m
+    [90m125| [39m
+    [90m126| [39m      
+[34msetToken[39m([32m'existing-token'[39m)[33m;[39m
+
+[31m[2mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»[1/1]ÔÄ»[22m[39m
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m4 passed[39m[22m[90m (5)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m63 passed[39m[22m[90m (64)[39m
+[2m   Start at [22m 00:57:01
+[2m   Duration [22m 1.99s[2m (transform 182ms, setup 0ms, collect 975ms, tests 308ms, environment 4.84s, prepare 1.36s)[22m
+

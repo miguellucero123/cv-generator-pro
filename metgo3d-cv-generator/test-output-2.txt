@@ -1,0 +1,147 @@
+﻿npx : [33mThe CJS build of Vite's Node API is deprecated. See 
+https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for 
+more details.[39m
+En línea: 1 Carácter: 1
++ npx vitest run 2>&1 | Out-File -FilePath test-output-2.txt -Encoding  ...
++ ~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([33mThe CJS bu...e details.[39m 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[7m[1m[36m RUN [39m[22m[27m [36mv1.6.1[39m [90mD:/One_Drive_AIEP/OneDrive - Aiep/Repo_AIEP/cv-generator-pro/metgo3d-cv-generator[39m
+
+ [32mÔ£ô[39m src/__tests__/unit/useLocalStorage.spec.js [2m ([22m[2m6 tests[22m[2m)[22m[90m 8[2mms[22m[39m
+[90mstderr[2m | src/__tests__/unit/useEditor.spec.js[2m > 
+[22m[2museEditor[2m > [22m[2mdeber├¡a resetear CV al estado 
+inicial[22m[39m
+Error: Not implemented: window.confirm
+    at module.exports (D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator
+-pro\metgo3d-cv-generator\node_modules\jsdom\lib\jsdom\browser\not-implemented.
+js:9:17)
+    at D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator-pro\metgo3d-cv-
+generator\node_modules\jsdom\lib\jsdom\browser\Window.js:898:7
+    at resetToDefault (D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator
+-pro\metgo3d-cv-generator\src\composables\useEditor.js:154:7)
+    at resetCV (D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator-pro\me
+tgo3d-cv-generator\src\composables\useEditor.js:315:5)
+    at D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator-pro\metgo3d-cv-
+generator\src\__tests__\unit\useEditor.spec.js:145:5
+    at file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-generator-pro
+/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:135:14
+    at file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-generator-pro
+/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:60:26
+    at runTest (file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-gene
+rator-pro/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:781:17
+)
+    at runSuite (file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-gen
+erator-pro/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:909:1
+5)
+    at runSuite (file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-gen
+erator-pro/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:909:1
+5) [90mundefined[39m
+
+ [32mÔ£ô[39m src/__tests__/unit/useEditor.spec.js [2m ([22m[2m10 tests[22m[2m)[22m[90m 35[2mms[22m[39m
+ [32mÔ£ô[39m src/__tests__/unit/useI18n.spec.js [2m ([22m[2m6 tests[22m[2m)[22m[90m 8[2mms[22m[39m
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js [2m ([22m[2m22 tests[22m[2m)[22m[90m 25[2mms[22m[39m
+[90mstderr[2m | src/__tests__/unit/useAPI.spec.js[2m > [22m[2museAPI[2m 
+> [22m[2mError handling[2m > [22m[2mshould clear error manually[22m[39m
+[Vue warn] Set operation on key "value" failed: target is readonly. RefImpl {
+  dep: Dep {
+    computed: [90mundefined[39m,
+    version: [33m0[39m,
+    activeLink: [90mundefined[39m,
+    subs: [90mundefined[39m,
+    map: [90mundefined[39m,
+    key: [90mundefined[39m,
+    sc: [33m0[39m,
+    __v_skip: [33mtrue[39m,
+    subsHead: [90mundefined[39m
+  },
+  __v_isRef: [33mtrue[39m,
+  __v_isShallow: [33mfalse[39m,
+  _rawValue: [1mnull[22m,
+  _value: [1mnull[22m
+}
+
+ [33mÔØ»[39m src/__tests__/unit/useCVAPI.spec.js [2m ([22m[2m25 tests[22m [2m|[22m [31m1 failed[39m[2m)[22m[90m 41[2mms[22m[39m
+[31m   [33mÔØ»[31m src/__tests__/unit/useCVAPI.spec.js[2m > [22museCVAPI[2m > [22mimportCV[2m > [22mshould import CV with personalInfo field and wrap it[39m
+[31m     ÔåÆ expected "spy" to be called with arguments: [ '/cvs/import', ObjectContaining{ÔÇª} ][90m
+
+Received: 
+
+[1m  1st spy call:
+
+[22m[2m  Array [[22m
+[2m    "/cvs/import",[22m
+[32m-   ObjectContaining {[90m
+[32m-     "personal": Object {[90m
+[31m+   Object {[90m
+[2m      "experience": Array [],[22m
+[32m-       "personalInfo": Object {[90m
+[32m-         "name": "Import Test",[90m
+[32m-       },[90m
+[32m-     },[90m
+[2m      "personalInfo": Object {[22m
+[2m        "name": "Import Test",[22m
+[2m      },[22m
+[2m    },[22m
+[2m  ][22m
+[31m[90m
+
+Number of calls: [1m1[22m
+[31m[39m
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js [2m ([22m[2m20 tests[22m[2m)[22m[90m 231[2mms[22m[39m
+
+[31mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[1m[7m Failed Tests 1 
+[27m[22mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/__tests__/unit/useCVAPI.spec.js[2m > 
+[22museCVAPI[2m > [22mimportCV[2m > [22mshould import CV with 
+personalInfo field and wrap it
+[31m[1mAssertionError[22m: expected "spy" to be called with arguments: [ 
+'/cvs/import', ObjectContaining{ÔÇª} ][90m
+
+Received: 
+
+[1m  1st spy call:
+
+[22m[2m  Array [[22m
+[2m    "/cvs/import",[22m
+[32m-   ObjectContaining {[90m
+[32m-     "personal": Object {[90m
+[31m+   Object {[90m
+[2m      "experience": Array [],[22m
+[32m-       "personalInfo": Object {[90m
+[32m-         "name": "Import Test",[90m
+[32m-       },[90m
+[32m-     },[90m
+[2m      "personalInfo": Object {[22m
+[2m        "name": "Import Test",[22m
+[2m      },[22m
+[2m    },[22m
+[2m  ][22m
+[31m[90m
+
+Number of calls: [1m1[22m
+[31m[39m
+[36m [2mÔØ»[22m src/__tests__/unit/useCVAPI.spec.js:[2m273:28[22m[39m
+    [90m271| [39m      [35mawait[39m 
+cvAPI[33m.[39m[34mimportCV[39m(cvData)[33m;[39m
+    [90m272| [39m
+    [90m273| [39m      [34mexpect[39m(mockAPI[33m.[39mpost)[33m.[39m[3
+4mtoHaveBeenCalledWith[39m([32m'/cvs/import'[39m[33m,[39m 
+expect[33m.[39mÔÇª
+    [90m   | [39m                           [31m^[39m
+    [90m274| [39m        personal[33m:[39m cvData[33m,[39m
+    [90m275| [39m        personalInfo[33m:[39m 
+cvData[33m.[39mpersonalInfo
+
+[31m[2mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»[1/1]ÔÄ»[22m[39m
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m5 passed[39m[22m[90m (6)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m88 passed[39m[22m[90m (89)[39m
+[2m   Start at [22m 01:00:32
+[2m   Duration [22m 2.25s[2m (transform 372ms, setup 1ms, collect 1.56s, tests 348ms, environment 7.26s, prepare 1.81s)[22m
+

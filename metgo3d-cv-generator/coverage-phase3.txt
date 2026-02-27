@@ -1,0 +1,103 @@
+﻿npx : [33mThe CJS build of Vite's Node API is deprecated. See 
+https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for 
+more details.[39m
+En línea: 1 Carácter: 1
++ npx vitest run --coverage 2>&1 | Out-File -FilePath coverage-phase3.t ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([33mThe CJS bu...e details.[39m 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[7m[1m[36m RUN [39m[22m[27m [36mv1.6.1[39m [90mD:/One_Drive_AIEP/OneDrive - Aiep/Repo_AIEP/cv-generator-pro/metgo3d-cv-generator[39m
+[2m      Coverage enabled with [22m[33mv8[39m
+
+[90mstderr[2m | src/__tests__/unit/useEditor.spec.js[2m > 
+[22m[2museEditor[2m > [22m[2mdeber├¡a resetear CV al estado 
+inicial[22m[39m
+Error: Not implemented: window.confirm
+    at module.exports (D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator
+-pro\metgo3d-cv-generator\node_modules\jsdom\lib\jsdom\browser\not-implemented.
+js:9:17)
+    at D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator-pro\metgo3d-cv-
+generator\node_modules\jsdom\lib\jsdom\browser\Window.js:898:7
+    at resetToDefault (D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator
+-pro\metgo3d-cv-generator\src\composables\useEditor.js:154:7)
+    at resetCV (D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator-pro\me
+tgo3d-cv-generator\src\composables\useEditor.js:315:5)
+    at D:\One_Drive_AIEP\OneDrive - Aiep\Repo_AIEP\cv-generator-pro\metgo3d-cv-
+generator\src\__tests__\unit\useEditor.spec.js:145:5
+    at file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-generator-pro
+/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:135:14
+    at file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-generator-pro
+/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:60:26
+    at runTest (file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-gene
+rator-pro/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:781:17
+)
+    at runSuite (file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-gen
+erator-pro/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:909:1
+5)
+    at runSuite (file:///D:/One_Drive_AIEP/OneDrive%20-%20Aiep/Repo_AIEP/cv-gen
+erator-pro/metgo3d-cv-generator/node_modules/@vitest/runner/dist/index.js:909:1
+5) [90mundefined[39m
+
+[90mstderr[2m | src/__tests__/unit/useAPI.spec.js[2m > [22m[2museAPI[2m 
+> [22m[2mError handling[2m > [22m[2mshould clear error manually[22m[39m
+[Vue warn] Set operation on key "value" failed: target is readonly. RefImpl {
+  dep: Dep {
+    computed: [90mundefined[39m,
+    version: [33m0[39m,
+    activeLink: [90mundefined[39m,
+    subs: [90mundefined[39m,
+    map: [90mundefined[39m,
+    key: [90mundefined[39m,
+    sc: [33m0[39m,
+    __v_skip: [33mtrue[39m,
+    subsHead: [90mundefined[39m
+  },
+  __v_isRef: [33mtrue[39m,
+  __v_isShallow: [33mfalse[39m,
+  _rawValue: [1mnull[22m,
+  _value: [1mnull[22m
+}
+
+ [32mÔ£ô[39m src/__tests__/unit/useLocalStorage.spec.js [2m ([22m[2m6 tests[22m[2m)[22m[90m 10[2mms[22m[39m
+ [32mÔ£ô[39m src/__tests__/unit/useI18n.spec.js [2m ([22m[2m6 tests[22m[2m)[22m[90m 15[2mms[22m[39m
+ [32mÔ£ô[39m src/__tests__/unit/useShareAPI.spec.js [2m ([22m[2m17 tests[22m[2m)[22m[90m 22[2mms[22m[39m
+ [32mÔ£ô[39m src/__tests__/unit/useEditor.spec.js [2m ([22m[2m10 tests[22m[2m)[22m[90m 41[2mms[22m[39m
+ [32mÔ£ô[39m src/__tests__/unit/useAPI.spec.js [2m ([22m[2m22 tests[22m[2m)[22m[90m 32[2mms[22m[39m
+ [32mÔ£ô[39m src/__tests__/unit/useCVAPI.spec.js [2m ([22m[2m25 tests[22m[2m)[22m[90m 40[2mms[22m[39m
+ [32mÔ£ô[39m src/__tests__/unit/useAuthAPI.spec.js [2m ([22m[2m20 tests[22m[2m)[22m[90m 229[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m7 passed[39m[22m[90m (7)[39m
+[2m      Tests [22m [1m[32m106 passed[39m[22m[90m (106)[39m
+[2m   Start at [22m 01:03:21
+[2m   Duration [22m 2.71s[2m (transform 412ms, setup 1ms, collect 1.99s, tests 389ms, environment 9.64s, prepare 2.50s)[22m
+
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   57.05 |    83.92 |   75.58 |   57.05 |                   
+ composables       |   61.96 |    85.45 |   78.31 |   61.96 |                   
+  useAPI.js        |     100 |    90.32 |     100 |     100 | 68,75             
+  useAuthAPI.js    |     100 |      100 |     100 |     100 |                   
+  useCVAPI.js      |     100 |      100 |     100 |     100 |                   
+  useEditor.js     |      60 |    68.96 |   59.25 |      60 | ...86-287,289-290 
+  useI18n.js       |   94.73 |    78.57 |   83.33 |   94.73 | 39-41             
+  ...calStorage.js |   71.15 |     62.5 |   66.66 |   71.15 | ...75-81,86,93-95 
+  ...fGenerator.js |       0 |        0 |       0 |       0 | 1-67              
+  ...esentation.js |       0 |        0 |       0 |       0 | 1-111             
+  ...Animations.js |       0 |        0 |       0 |       0 | 1-62              
+  useShareAPI.js   |     100 |      100 |     100 |     100 |                   
+ data              |     100 |      100 |     100 |     100 |                   
+  cvData.js        |     100 |      100 |     100 |     100 |                   
+ i18n              |     100 |      100 |     100 |     100 |                   
+  en.js            |     100 |      100 |     100 |     100 |                   
+  es.js            |     100 |      100 |     100 |     100 |                   
+ router            |       0 |        0 |       0 |       0 |                   
+  index.js         |       0 |        0 |       0 |       0 | 1-62              
+ utils             |       0 |        0 |       0 |       0 |                   
+  cvMapper.js      |       0 |        0 |       0 |       0 | 1-174             
+  ...tionSlides.js |       0 |        0 |       0 |       0 | 1-70              
+-------------------|---------|----------|---------|---------|-------------------
