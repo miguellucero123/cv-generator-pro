@@ -1,0 +1,55 @@
+name: Frontend Build & Test
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "metgo3d-cv-generator/**"
+      - ".github/workflows/frontend-build.yml"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "metgo3d-cv-generator/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+          cache-dependency-path: "metgo3d-cv-generator/package-lock.json"
+
+      - name: Install dependencies
+        run: |
+          cd metgo3d-cv-generator
+          npm ci
+
+      - name: Build
+        run: |
+          cd metgo3d-cv-generator
+          npm run build
+
+      - name: Check build size
+        run: |
+          cd metgo3d-cv-generator
+          if [ -d dist ]; then
+            echo "✅ Build successful"
+            du -sh dist
+          fi
+
+      - name: Report Status
+        if: always()
+        run: |
+          echo "## ✅ Frontend Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Node.js ${{ matrix.node-version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Build: ✅" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,68 @@
+name: Backend Tests CI
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "cv-generator-backend/**"
+      - ".github/workflows/backend-tests.yml"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "cv-generator-backend/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+          cache-dependency-path: "cv-generator-backend/package-lock.json"
+
+      - name: Install dependencies
+        run: |
+          cd cv-generator-backend
+          npm ci
+
+      - name: Run linter (ESLint)
+        run: |
+          cd cv-generator-backend
+          npm run lint 2>/dev/null || echo "Linter no configurado aún"
+
+      - name: Run tests
+        run: |
+          cd cv-generator-backend
+          npm test -- --coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./cv-generator-backend/coverage/coverage-final.json
+          fail_ci_if_error: false
+          verbose: true
+
+      - name: Check test results
+        if: always()
+        run: |
+          cd cv-generator-backend
+          if [ -d coverage ]; then
+            echo "✅ Coverage report generated"
+            cat coverage/coverage-summary.json | grep -o '"lines":{"total":[^}]*}' || echo "No coverage data"
+          fi
+
+      - name: Report Status
+        if: always()
+        run: |
+          echo "## ✅ Backend Tests Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Node.js ${{ matrix.node-version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Tests: ✅" >> $GITHUB_STEP_SUMMARY

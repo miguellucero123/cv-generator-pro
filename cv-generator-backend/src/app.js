@@ -7,6 +7,9 @@ const passport = require('passport');
 
 require('./config/passport');
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerConfig = require('./config/swagger');
+
 const authRoutes = require('./routes/auth');
 const cvRoutes = require('./routes/cv');
 const shareRoutes = require('./routes/share');
@@ -49,6 +52,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/cvs', cvRoutes);
 app.use('/api/share', shareRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerConfig));
 
 app.use('*', (req, res) => {
   res.status(404).json({

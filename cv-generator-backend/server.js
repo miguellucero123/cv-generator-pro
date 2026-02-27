@@ -1,8 +1,22 @@
 require('dotenv').config();
+
+// Validar configuración de ambiente antes de hacer nada
+const { validateEnv, printConfigStatus } = require('./src/config/env');
+
+try {
+  validateEnv();
+} catch (error) {
+  console.error(error.message);
+  process.exit(1);
+}
+
 const app = require('./src/app');
 const connectDB = require('./src/config/database');
 
 const PORT = process.env.PORT || 5000;
+
+// Mostrar status de configuración
+printConfigStatus();
 
 connectDB();
 
