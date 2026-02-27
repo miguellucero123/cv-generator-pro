@@ -1,0 +1,30 @@
+/**
+ * METGO_3D VIRTUALIZE - Print & PDF styles
+ */
+@media print {
+  .control-panel,
+  .btn-editor,
+  .btn-pdf,
+  .template-selector,
+  .cv-editor {
+    display: none !important;
+  }
+
+  .layout {
+    display: block !important;
+  }
+
+  .cv-preview {
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+    break-inside: avoid;
+  }
+
+  body {
+    background: white !important;
+  }
+
+  .app {
+    max-width: 100%;
+  }
+}

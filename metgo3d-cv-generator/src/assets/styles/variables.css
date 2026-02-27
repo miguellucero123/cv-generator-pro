@@ -1,0 +1,14 @@
+/**
+ * METGO_3D VIRTUALIZE - Design Tokens
+ */
+:root {
+  --metgo-primary: #00d4aa;
+  --metgo-secondary: #1a1a2e;
+  --metgo-accent: #16213e;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+}

@@ -1,0 +1,42 @@
+{
+  "name": "metgo3d-cv-generator",
+  "version": "2.5.0",
+  "description": "Generador de CV Profesional METGO_3D VIRTUALIZE - Vue.js con editor visual, múltiples plantillas y exportación PDF",
+  "author": "Miguel Lucero Gatica <miguellucerogatica@gmail.com>",
+  "homepage": "https://www.metgo3d.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miguellucero123/metgo3d-cv-generator"
+  },
+  "keywords": [
+    "cv-generator",
+    "vue3",
+    "pdf-export",
+    "metgo3d",
+    "portfolio",
+    "resume-builder"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js --fix",
+    "deploy": "npm run build && gh-pages -d dist",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "animejs": "^3.2.2",
+    "html2canvas": "^1.4.1",
+    "html2pdf.js": "^0.10.1",
+    "jspdf": "^2.5.1",
+    "qrcode": "^1.5.3",
+    "vue": "^3.4.21",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "gh-pages": "^6.1.1",
+    "vite": "^5.2.0",
+    "vitest": "^1.3.1"
+  }
+}

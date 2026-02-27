@@ -1,0 +1,5209 @@
+CV Profesional METGO_3D VIRTUALIZE - Vue.js Application
+📋 CV MEJORADO CON MARCA CORPORATIVA
+METGO_3D VIRTUALIZE
+
+MIGUEL IGNACIO LUCERO GATICA
+
+Analista de Datos & Desarrollador Front-End | Meteorólogo
+
+Fundador de METGO_3D VIRTUALIZE
+
+🎯 PERFIL PROFESIONAL
+Profesional multidisciplinario y emprendedor tecnológico, fundador de METGO_3D VIRTUALIZE metgo3d.com. Con +8 años de experiencia en industrias de alta exigencia (Minería, Meteorología y Medio Ambiente). Técnico en Análisis de Datos (AIEP, 2024) actualmente especializándose en Desarrollo Front-End mediante Bootcamp Talento Digital SENCE.
+
+Perfil técnico híbrido que integra ciencia de datos (Python, SQL, Big Data) con desarrollo web moderno, respaldado por certificación internacional PCEP™ y portafolio activo con +15 repositorios en GitHub. Participante seleccionado en programa de emprendimiento Santander Explorer donde desarrolló el proyecto METGO_3D.
+
+💻 PROYECTO COMPLETO VUE.JS
+📁 Estructura del Proyecto Mejorada
+text
+metgo3d-cv-generator/
+├── public/
+│   ├── index.html
+│   ├── favicon.ico
+│   └── assets/
+│       └── metgo3d-logo.svg
+├── src/
+│   ├── assets/
+│   │   ├── styles/
+│   │   │   ├── main.css
+│   │   │   ├── variables.css
+│   │   │   ├── components.css
+│   │   │   ├── print.css
+│   │   │   └── animations.css
+│   │   └── images/
+│   │       └── profile-placeholder.png
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── AppHeader.vue
+│   │   │   ├── AppFooter.vue
+│   │   │   └── ControlPanel.vue
+│   │   ├── cv/
+│   │   │   ├── CVPreview.vue
+│   │   │   ├── CVHeader.vue
+│   │   │   ├── CVProfile.vue
+│   │   │   ├── CVSkills.vue
+│   │   │   ├── CVEducation.vue
+│   │   │   ├── CVExperience.vue
+│   │   │   ├── CVProjects.vue
+│   │   │   └── CVBrand.vue
+│   │   └── ui/
+│   │       ├── BaseButton.vue
+│   │       ├── BaseCard.vue
+│   │       ├── SkillTag.vue
+│   │       ├── TimelineItem.vue
+│   │       ├── LoadingSpinner.vue
+│   │       └── ThemeToggle.vue
+│   ├── composables/
+│   │   ├── usePdfGenerator.js
+│   │   ├── useTheme.js
+│   │   └── useAnalytics.js
+│   ├── data/
+│   │   └── cvData.js
+│   ├── utils/
+│   │   ├── formatters.js
+│   │   └── validators.js
+│   ├── App.vue
+│   └── main.js
+├── package.json
+├── vite.config.js
+├── .gitignore
+└── README.md
+🛠️ SCRIPTS DE CONFIGURACIÓN
+1. package.json
+json
+{
+  "name": "metgo3d-cv-generator",
+  "version": "2.0.0",
+  "description": "Generador de CV Profesional METGO_3D VIRTUALIZE - Vue.js con exportación PDF",
+  "author": "Miguel Lucero Gatica <miguellucerogatica@gmail.com>",
+  "homepage": "https://www.metgo3d.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miguellucero123/metgo3d-cv-generator"
+  },
+  "keywords": [
+    "cv-generator",
+    "vue3",
+    "pdf-export",
+    "metgo3d",
+    "portfolio"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js --fix",
+    "deploy": "npm run build && gh-pages -d dist"
+  },
+  "dependencies": {
+    "vue": "^3.4.21",
+    "html2pdf.js": "^0.10.1",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.0",
+    "gh-pages": "^6.1.1"
+  }
+}
+2. vite.config.js
+javascript
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { resolve } from 'path'
+
+export default defineConfig({
+  plugins: [vue()],
+  base: '/metgo3d-cv-generator/',
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+      '@components': resolve(__dirname, 'src/components'),
+      '@assets': resolve(__dirname, 'src/assets'),
+      '@data': resolve(__dirname, 'src/data'),
+      '@composables': resolve(__dirname, 'src/composables'),
+      '@utils': resolve(__dirname, 'src/utils')
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      css: {
+        additionalData: `@import "@/assets/styles/variables.css";`
+      }
+    }
+  },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true
+      }
+    }
+  }
+})
+3. public/index.html
+html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CV Profesional de Miguel Lucero Gatica - METGO_3D VIRTUALIZE - Analista de Datos y Desarrollador Front-End">
+  <meta name="keywords" content="CV, curriculum, analista de datos, desarrollador frontend, meteorólogo, METGO_3D">
+  <meta name="author" content="Miguel Lucero Gatica">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="CV Profesional - METGO_3D VIRTUALIZE">
+  <meta property="og:description" content="Generador de CV Profesional con Vue.js">
+  <meta property="og:image" content="/assets/metgo3d-og-image.png">
+  <meta property="og:url" content="https://www.metgo3d.com">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CV Profesional - METGO_3D VIRTUALIZE">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <title>CV Profesional | METGO_3D VIRTUALIZE | Miguel Lucero Gatica</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
+📊 DATA
+4. src/data/cvData.js
+javascript
+/**
+ * METGO_3D VIRTUALIZE - CV Data Configuration
+ * @author Miguel Lucero Gatica
+ * @website https://www.metgo3d.com
+ */
+
+export const brandConfig = {
+  name: 'METGO_3D',
+  tagline: 'VIRTUALIZE',
+  fullName: 'METGO_3D VIRTUALIZE',
+  website: 'https://www.metgo3d.com',
+  colors: {
+    primary: '#00d4aa',      // Verde turquesa METGO
+    secondary: '#1a1a2e',    // Azul oscuro
+    accent: '#16213e',       // Azul medio
+    highlight: '#0f3460',    // Azul profundo
+    text: '#eaeaea',         // Texto claro
+    textDark: '#1a202c',     // Texto oscuro
+    gradient: 'linear-gradient(135deg, #00d4aa 0%, #00a896 50%, #028090 100%)'
+  },
+  social: {
+    github: 'https://github.com/miguellucero123',
+    linkedin: 'https://www.linkedin.com/in/metgo3d/',
+    website: 'https://www.metgo3d.com',
+    portfolio: 'https://miguellucero123.github.io/MP/'
+  }
+}
+
+export const cvData = {
+  // ==================== INFORMACIÓN PERSONAL ====================
+  personal: {
+    nombre: 'MIGUEL IGNACIO LUCERO GATICA',
+    titulo: 'Analista de Datos & Desarrollador Front-End',
+    subtitulo: 'Meteorólogo | Fundador METGO_3D VIRTUALIZE',
+    ubicacion: 'Quilpué, Región de Valparaíso, Chile',
+    telefono: '+56 9 9931 9162',
+    email: 'miguellucerogatica@gmail.com',
+    linkedin: 'linkedin.com/in/metgo3d',
+    linkedinUrl: 'https://www.linkedin.com/in/metgo3d/',
+    github: 'github.com/miguellucero123',
+    githubUrl: 'https://github.com/miguellucero123',
+    website: 'metgo3d.com',
+    websiteUrl: 'https://www.metgo3d.com',
+    portfolio: 'miguellucero123.github.io/MP',
+    portfolioUrl: 'https://miguellucero123.github.io/MP/',
+    disponibilidad: 'Inmediata',
+    modalidad: 'Presencial / Híbrido / Remoto'
+  },
+
+  // ==================== PERFIL PROFESIONAL ====================
+  perfil: {
+    resumen: `Profesional multidisciplinario y emprendedor tecnológico con más de 8 años de experiencia 
+    en industrias de alta exigencia (Minería, Meteorología y Medio Ambiente). Técnico en Análisis de 
+    Datos egresado de AIEP, actualmente especializándose en Desarrollo Front-End mediante Bootcamp 
+    Talento Digital SENCE.`,
+    
+    destacados: [
+      'Fundador de METGO_3D VIRTUALIZE (metgo3d.com)',
+      'Certificación internacional PCEP™ Python Programmer',
+      '+15 repositorios activos en GitHub',
+      'Participante seleccionado Santander Explorer',
+      'Diplomado en Big Data - Universidad de los Andes'
+    ],
+    
+    propuestaValor: `Perfil técnico híbrido que combina el rigor analítico de la ciencia de datos 
+    con la creatividad del desarrollo web, aportando soluciones tecnológicas innovadoras basadas 
+    en experiencia real en entornos operativos críticos.`
+  },
+
+  // ==================== COMPETENCIAS TÉCNICAS ====================
+  competencias: {
+    programacion: {
+      titulo: 'Programación & Desarrollo',
+      icon: 'fa-code',
+      skills: [
+        { nombre: 'Python', nivel: 90, certificado: true },
+        { nombre: 'JavaScript', nivel: 75, certificado: false },
+        { nombre: 'SQL', nivel: 85, certificado: false },
+        { nombre: 'HTML5/CSS3', nivel: 80, certificado: false },
+        { nombre: 'Vue.js', nivel: 70, certificado: false },
+        { nombre: 'Git/GitHub', nivel: 85, certificado: false }
+      ]
+    },
+    datascience: {
+      titulo: 'Ciencia de Datos & Analytics',
+      icon: 'fa-chart-line',
+      skills: [
+        { nombre: 'Pandas', nivel: 88, certificado: false },
+        { nombre: 'NumPy', nivel: 85, certificado: false },
+        { nombre: 'Scikit-learn', nivel: 75, certificado: false },
+        { nombre: 'Matplotlib/Seaborn', nivel: 82, certificado: false },
+        { nombre: 'Power BI', nivel: 70, certificado: false },
+        { nombre: 'Excel Avanzado', nivel: 90, certificado: false }
+      ]
+    },
+    herramientas: {
+      titulo: 'Herramientas & Plataformas',
+      icon: 'fa-tools',
+      skills: [
+        { nombre: 'VS Code', nivel: 90, certificado: false },
+        { nombre: 'Jupyter Notebooks', nivel: 88, certificado: false },
+        { nombre: 'Google Colab', nivel: 85, certificado: false },
+        { nombre: 'Vaisala Thunderstorm', nivel: 95, certificado: false },
+        { nombre: 'Linux/Terminal', nivel: 70, certificado: false }
+      ]
+    },
+    soft: {
+      titulo: 'Competencias Blandas',
+      icon: 'fa-users',
+      skills: [
+        'Liderazgo de equipos técnicos',
+        'Comunicación efectiva',
+        'Resolución de problemas',
+        'Trabajo bajo presión',
+        'Pensamiento analítico',
+        'Adaptabilidad',
+        'Gestión del tiempo',
+        'Trabajo en equipo'
+      ]
+    }
+  },
+
+  // ==================== FORMACIÓN ACADÉMICA ====================
+  educacion: [
+    {
+      titulo: 'Técnico de Nivel Superior en Análisis de Datos',
+      institucion: 'Instituto Profesional AIEP',
+      periodo: '2024',
+      estado: 'Egresado',
+      tipo: 'tecnico',
+      destacado: true,
+      descripcion: 'Formación integral en análisis, procesamiento y visualización de datos para la toma de decisiones empresariales.'
+    },
+    {
+      titulo: 'Bootcamp Desarrollo Front-End Aplicaciones Web',
+      institucion: 'Talento Digital para Chile - SENCE',
+      periodo: '2025',
+      estado: 'En curso',
+      tipo: 'bootcamp',
+      destacado: true,
+      descripcion: 'Programa intensivo de especialización en desarrollo de interfaces y aplicaciones web modernas.'
+    },
+    {
+      titulo: 'Diplomado en Big Data & Ciencia de Datos',
+      institucion: 'Universidad de los Andes',
+      periodo: 'Mayo 2023 - Agosto 2024',
+      estado: 'Completado',
+      tipo: 'diplomado',
+      destacado: true,
+      descripcion: 'Especialización en análisis de grandes volúmenes de datos, machine learning y modelos predictivos.'
+    },
+    {
+      titulo: 'Título Profesional de Meteorólogo',
+      institucion: 'Universidad de Valparaíso',
+      periodo: '2021 - 2022',
+      estado: 'Titulado',
+      tipo: 'profesional',
+      destacado: false,
+      descripcion: 'Formación profesional en ciencias atmosféricas y pronóstico meteorológico.'
+    },
+    {
+      titulo: 'Diplomado en Cambio Climático',
+      institucion: 'Universidad de Chile',
+      periodo: '2019 - 2020',
+      estado: 'Completado',
+      tipo: 'diplomado',
+      destacado: false,
+      descripcion: 'Especialización en impactos, mitigación y adaptación al cambio climático.'
+    },
+    {
+      titulo: 'Licenciatura en Meteorología',
+      institucion: 'Universidad de Valparaíso',
+      periodo: '2005 - 2013',
+      estado: 'Licenciado',
+      tipo: 'licenciatura',
+      destacado: false,
+      descripcion: 'Formación científica en física atmosférica y ciencias de la tierra.'
+    }
+  ],
+
+  // ==================== CERTIFICACIONES ====================
+  certificaciones: [
+    {
+      nombre: 'PCEP™ – Certified Entry-Level Python Programmer',
+      institucion: 'Python Institute',
+      fecha: 'Febrero 2025',
+      credencial: 'PCEP-30-02',
+      url: 'https://pythoninstitute.org/pcep',
+      verificable: true,
+      destacado: true
+    },
+    {
+      nombre: 'Programación en Python para Procesamiento de Datos',
+      institucion: 'Teleduc - Pontificia Universidad Católica de Chile',
+      fecha: '2024',
+      credencial: null,
+      url: null,
+      verificable: true,
+      destacado: false
+    }
+  ],
+
+  // ==================== EXPERIENCIA LABORAL ====================
+  experiencia: [
+    {
+      cargo: 'Meteorólogo de Operaciones y Medio Ambiente',
+      empresa: 'SGS Chile Ltda.',
+      proyecto: 'Proyecto ENAMI Paipote',
+      ubicacion: 'Copiapó, Atacama',
+      periodo: 'Agosto 2022 - Abril 2024',
+      duracion: '1 año 9 meses',
+      tipo: 'Tiempo completo',
+      industria: 'Minería / Medio Ambiente',
+      logros: [
+        {
+          descripcion: 'Desarrollo de pronósticos meteorológicos de alta precisión para programación estratégica de producción en fundición de cobre',
+          impacto: 'Optimización de ciclos productivos',
+          metrica: null
+        },
+        {
+          descripcion: 'Análisis estadístico mensual de concentraciones de SO₂ y ácido sulfúrico para cumplimiento normativo ambiental',
+          impacto: 'Cumplimiento 100% normativo',
+          metrica: '100%'
+        },
+        {
+          descripcion: 'Implementación de reportes automatizados para monitoreo de calidad del aire',
+          impacto: 'Reducción tiempo de reportabilidad',
+          metrica: '40%'
+        },
+        {
+          descripcion: 'Coordinación con equipos de operaciones para alertas tempranas meteorológicas',
+          impacto: 'Cero incidentes por clima',
+          metrica: '0'
+        }
+      ],
+      tecnologias: ['Python', 'Excel Avanzado', 'Vaisala', 'Bases de datos SQL'],
+      destacado: true
+    },
+    {
+      cargo: 'Meteorólogo Especialista en Nivología',
+      empresa: 'Asesoría Técnica Pucara S.A.',
+      proyecto: null,
+      ubicacion: 'Alta Montaña - Zona Central',
+      periodo: 'Abril 2019 - Abril 2021',
+      duracion: '2 años',
+      tipo: 'Tiempo completo',
+      industria: 'Minería / Seguridad',
+      logros: [
+        {
+          descripcion: 'Análisis de modelos meteorológicos y variables físicas para control de riesgos de avalanchas',
+          impacto: 'Seguridad operacional',
+          metrica: null
+        },
+        {
+          descripcion: 'Elaboración diaria de informes técnicos para toma de decisiones de gerencia de operaciones',
+          impacto: 'Soporte a decisiones críticas',
+          metrica: '+500 informes'
+        },
+        {
+          descripcion: 'Administración de bases de datos climáticas históricas para estudios de período de retorno',
+          impacto: 'Análisis predictivo',
+          metrica: '10 años de data'
+        }
+      ],
+      tecnologias: ['Modelos WRF', 'GFS', 'Python', 'Excel'],
+      destacado: true
+    },
+    {
+      cargo: 'Operador Técnico de Meteorología',
+      empresa: 'Compañía Minera Nevada S.A.',
+      proyecto: 'Proyecto Pascua Lama',
+      ubicacion: 'Alta Cordillera - Región de Atacama',
+      periodo: 'Abril 2017 - Septiembre 2018',
+      duracion: '1 año 6 meses',
+      tipo: 'Tiempo completo',
+      industria: 'Minería',
+      logros: [
+        {
+          descripcion: 'Responsable de operatividad de red de monitoreo meteorológico sobre 4.000 msnm',
+          impacto: 'Disponibilidad de datos',
+          metrica: '99.5%'
+        },
+        {
+          descripcion: 'Validación y limpieza de datos en tiempo real para integridad de registros ambientales',
+          impacto: 'Calidad de datos',
+          metrica: null
+        },
+        {
+          descripcion: 'Mantenimiento preventivo y correctivo de estaciones meteorológicas automáticas',
+          impacto: 'Continuidad operacional',
+          metrica: null
+        }
+      ],
+      tecnologias: ['SCADA', 'Vaisala', 'Excel', 'Bases de datos'],
+      destacado: false
+    },
+    {
+      cargo: 'Consultor y Analista Técnico',
+      empresa: 'Diversas empresas del sector',
+      proyecto: 'CESMEC S.A., CENMA, Servicio Meteorológico de Chile',
+      ubicacion: 'Región Metropolitana / Valparaíso',
+      periodo: '2012 - 2016',
+      duracion: '4 años',
+      tipo: 'Consultoría',
+      industria: 'Meteorología / Medio Ambiente',
+      logros: [
+        {
+          descripcion: 'Trayectoria consolidada en análisis, pronóstico y aseguramiento de calidad en terreno',
+          impacto: 'Experiencia multisectorial',
+          metrica: null
+        },
+        {
+          descripcion: 'Participación en estudios de impacto ambiental y líneas base meteorológicas',
+          impacto: 'Proyectos completados',
+          metrica: '+10'
+        }
+      ],
+      tecnologias: ['Instrumentación', 'Excel', 'Análisis estadístico'],
+      destacado: false
+    }
+  ],
+
+  // ==================== PROYECTOS DESTACADOS ====================
+  proyectos: [
+    {
+      nombre: 'METGO_3D VIRTUALIZE',
+      tipo: 'Emprendimiento Propio',
+      descripcion: 'Plataforma web para visualización y optimización de datos operativos meteorológicos. Proyecto desarrollado en programa de pre-incubación Santander Explorer.',
+      url: 'https://www.metgo3d.com',
+      github: null,
+      imagen: null,
+      tecnologias: ['Vue.js', 'JavaScript', 'Python', 'APIs REST'],
+      estado: 'En desarrollo',
+      destacado: true,
+      logros: [
+        'Seleccionado para programa Santander Explorer',
+        'MVP funcional desplegado',
+        'Validación con usuarios del sector minero'
+      ]
+    },
+    {
+      nombre: 'Portafolio Web Personal',
+      tipo: 'Proyecto Personal',
+      descripcion: 'Sitio web personal con showcase de proyectos, habilidades y experiencia profesional.',
+      url: 'https://miguellucero123.github.io/MP/',
+      github: 'https://github.com/miguellucero123/MP',
+      imagen: null,
+      tecnologias: ['HTML5', 'CSS3', 'JavaScript', 'GitHub Pages'],
+      estado: 'Activo',
+      destacado: true,
+      logros: [
+        'Diseño responsive',
+        'Deploy automatizado',
+        'SEO optimizado'
+      ]
+    },
+    {
+      nombre: 'Repositorio de Proyectos Data Science',
+      tipo: 'Portfolio Técnico',
+      descripcion: 'Colección de +15 proyectos demostrativos de análisis de datos, visualización y machine learning.',
+      url: 'https://github.com/miguellucero123',
+      github: 'https://github.com/miguellucero123',
+      imagen: null,
+      tecnologias: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib', 'SQL'],
+      estado: 'Activo',
+      destacado: true,
+      logros: [
+        '+15 repositorios públicos',
+        'Proyectos documentados',
+        'Notebooks interactivos'
+      ]
+    }
+  ],
+
+  // ==================== IDIOMAS ====================
+  idiomas: [
+    { idioma: 'Español', nivel: 'Nativo', porcentaje: 100 },
+    { idioma: 'Inglés', nivel: 'Intermedio (B1)', porcentaje: 60 }
+  ],
+
+  // ==================== INFORMACIÓN ADICIONAL ====================
+  adicional: {
+    disponibilidad: 'Inmediata',
+    relocacion: 'Disponible para relocalización',
+    licencia: 'Licencia de conducir Clase B',
+    expectativa: 'Según mercado',
+    referencias: 'Disponibles a solicitud'
+  }
+}
+
+// Exportar configuración de temas
+export const themeConfig = {
+  light: {
+    name: 'Claro',
+    background: '#f8fafc',
+    surface: '#ffffff',
+    text: '#1a202c',
+    textSecondary: '#4a5568',
+    border: '#e2e8f0',
+    primary: brandConfig.colors.primary,
+    accent: '#0f3460'
+  },
+  dark: {
+    name: 'Oscuro',
+    background: '#1a1a2e',
+    surface: '#16213e',
+    text: '#eaeaea',
+    textSecondary: '#a0aec0',
+    border: '#2d3748',
+    primary: brandConfig.colors.primary,
+    accent: '#00d4aa'
+  },
+  metgo: {
+    name: 'METGO_3D',
+    background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+    surface: 'rgba(255, 255, 255, 0.05)',
+    text: '#ffffff',
+    textSecondary: '#a0aec0',
+    border: 'rgba(0, 212, 170, 0.3)',
+    primary: brandConfig.colors.primary,
+    accent: '#00d4aa'
+  }
+}
+🎨 ESTILOS
+5. src/assets/styles/variables.css
+css
+/**
+ * METGO_3D VIRTUALIZE - CSS Variables
+ * Brand colors and design tokens
+ */
+
+:root {
+  /* ===== METGO_3D Brand Colors ===== */
+  --metgo-primary: #00d4aa;
+  --metgo-primary-light: #00f5c4;
+  --metgo-primary-dark: #00a896;
+  --metgo-secondary: #1a1a2e;
+  --metgo-accent: #16213e;
+  --metgo-highlight: #0f3460;
+  
+  /* ===== Gradient ===== */
+  --metgo-gradient: linear-gradient(135deg, #00d4aa 0%, #00a896 50%, #028090 100%);
+  --metgo-gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  --metgo-gradient-glow: linear-gradient(135deg, rgba(0, 212, 170, 0.2) 0%, rgba(0, 168, 150, 0.1) 100%);
+  
+  /* ===== Theme Colors (Light Default) ===== */
+  --color-bg-primary: #f8fafc;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #f1f5f9;
+  
+  --color-text-primary: #1a202c;
+  --color-text-secondary: #4a5568;
+  --color-text-tertiary: #718096;
+  --color-text-inverse: #ffffff;
+  
+  --color-border: #e2e8f0;
+  --color-border-light: #edf2f7;
+  --color-border-focus: var(--metgo-primary);
+  
+  /* ===== Semantic Colors ===== */
+  --color-success: #38a169;
+  --color-success-light: #c6f6d5;
+  --color-warning: #d69e2e;
+  --color-warning-light: #fefcbf;
+  --color-error: #e53e3e;
+  --color-error-light: #fed7d7;
+  --color-info: #3182ce;
+  --color-info-light: #bee3f8;
+  
+  /* ===== Typography ===== */
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-display: 'Space Grotesk', var(--font-family-primary);
+  --font-family-mono: 'Fira Code', 'Consolas', monospace;
+  
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* ===== Spacing ===== */
+  --spacing-1: 0.25rem;   /* 4px */
+  --spacing-2: 0.5rem;    /* 8px */
+  --spacing-3: 0.75rem;   /* 12px */
+  --spacing-4: 1rem;      /* 16px */
+  --spacing-5: 1.25rem;   /* 20px */
+  --spacing-6: 1.5rem;    /* 24px */
+  --spacing-8: 2rem;      /* 32px */
+  --spacing-10: 2.5rem;   /* 40px */
+  --spacing-12: 3rem;     /* 48px */
+  --spacing-16: 4rem;     /* 64px */
+  
+  /* ===== Border Radius ===== */
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-xl: 1rem;      /* 16px */
+  --radius-2xl: 1.5rem;   /* 24px */
+  --radius-full: 9999px;
+  
+  /* ===== Shadows ===== */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-metgo: 0 0 30px rgba(0, 212, 170, 0.3);
+  --shadow-metgo-lg: 0 0 60px rgba(0, 212, 170, 0.4);
+  
+  /* ===== Transitions ===== */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+  
+  /* ===== Z-Index ===== */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  
+  /* ===== Container ===== */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1200px;
+}
+
+/* ===== Dark Theme Override ===== */
+[data-theme="dark"] {
+  --color-bg-primary: #1a1a2e;
+  --color-bg-secondary: #16213e;
+  --color-bg-tertiary: #0f3460;
+  
+  --color-text-primary: #eaeaea;
+  --color-text-secondary: #a0aec0;
+  --color-text-tertiary: #718096;
+  
+  --color-border: #2d3748;
+  --color-border-light: #4a5568;
+}
+
+/* ===== METGO Theme Override ===== */
+[data-theme="metgo"] {
+  --color-bg-primary: #0d0d1a;
+  --color-bg-secondary: rgba(22, 33, 62, 0.8);
+  --color-bg-tertiary: rgba(15, 52, 96, 0.6);
+  
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a0aec0;
+  
+  --color-border: rgba(0, 212, 170, 0.2);
+  --color-border-light: rgba(0, 212, 170, 0.1);
+}
+6. src/assets/styles/main.css
+css
+/**
+ * METGO_3D VIRTUALIZE - Main Styles
+ */
+
+@import './variables.css';
+@import './components.css';
+@import './animations.css';
+@import './print.css';
+
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
+  min-height: 100vh;
+}
+
+/* ===== App Container ===== */
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  padding: var(--spacing-6);
+}
+
+/* ===== METGO Background ===== */
+.metgo-bg {
+  background: var(--metgo-gradient-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.metgo-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(0, 212, 170, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(0, 168, 150, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(2, 128, 144, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ===== Container ===== */
+.container {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+.container-narrow {
+  max-width: var(--container-lg);
+}
+
+/* ===== CV Container ===== */
+.cv-container {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-2xl);
+  overflow: hidden;
+  position: relative;
+}
+
+.cv-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--metgo-gradient);
+}
+
+/* ===== CV Preview ===== */
+.cv-preview {
+  padding: var(--spacing-10) var(--spacing-12);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ===== Section Styles ===== */
+.cv-section {
+  margin-bottom: var(--spacing-8);
+}
+
+.cv-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-5);
+}
+
+.section-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--metgo-gradient-glow);
+  border: 1px solid var(--metgo-primary);
+  border-radius: var(--radius-md);
+  color: var(--metgo-primary);
+  font-size: var(--font-size-lg);
+}
+
+.section-title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--metgo-gradient);
+  border-radius: var(--radius-full);
+}
+
+/* ===== Links ===== */
+a {
+  color: var(--metgo-primary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--metgo-primary-light);
+  text-decoration: underline;
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--metgo-primary);
+  color: var(--metgo-secondary);
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-tertiary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--metgo-primary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--metgo-primary-light);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .app-main {
+    padding: var(--spacing-4);
+  }
+  
+  .cv-preview {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+  
+  .section-title {
+    font-size: var(--font-size-base);
+  }
+}
+7. src/assets/styles/components.css
+css
+/**
+ * METGO_3D VIRTUALIZE - Component Styles
+ */
+
+/* ===== CV Header ===== */
+.cv-header {
+  text-align: center;
+  padding-bottom: var(--spacing-8);
+  margin-bottom: var(--spacing-8);
+  border-bottom: 2px solid var(--color-border);
+  position: relative;
+}
+
+.cv-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--metgo-gradient);
+  border-radius: var(--radius-full);
+}
+
+.cv-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--metgo-gradient-glow);
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-4);
+}
+
+.cv-brand-text {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--metgo-primary);
+  letter-spacing: 1px;
+}
+
+.cv-name {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-2);
+  letter-spacing: 1px;
+}
+
+.cv-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--metgo-primary);
+  margin-bottom: var(--spacing-1);
+}
+
+.cv-subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-5);
+}
+
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-4) var(--spacing-6);
+}
+
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.contact-item i {
+  color: var(--metgo-primary);
+  width: 16px;
+  text-align: center;
+}
+
+.contact-item a {
+  color: var(--color-text-secondary);
+}
+
+.contact-item a:hover {
+  color: var(--metgo-primary);
+}
+
+/* ===== Profile Section ===== */
+.profile-content {
+  background: var(--color-bg-tertiary);
+  padding: var(--spacing-6);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--metgo-primary);
+}
+
+.profile-text {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  text-align: justify;
+  margin-bottom: var(--spacing-4);
+}
+
+.profile-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-4);
+}
+
+.highlight-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-3);
+  background: var(--metgo-gradient-glow);
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  color: var(--metgo-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.highlight-tag i {
+  font-size: 10px;
+}
+
+/* ===== Skills Section ===== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-5);
+}
+
+.skill-category {
+  background: var(--color-bg-tertiary);
+  padding: var(--spacing-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  transition: var(--transition-normal);
+}
+
+.skill-category:hover {
+  border-color: var(--metgo-primary);
+  box-shadow: var(--shadow-metgo);
+}
+
+.skill-category-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-4);
+}
+
+.skill-category-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--metgo-gradient);
+  border-radius: var(--radius-md);
+  color: white;
+  font-size: var(--font-size-sm);
+}
+
+.skill-category-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+}
+
+.skill-name {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.skill-name .certified {
+  color: var(--color-success);
+  font-size: 10px;
+}
+
+.skill-bar {
+  flex: 1;
+  max-width: 100px;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: var(--metgo-gradient);
+  border-radius: var(--radius-full);
+  transition: width 1s ease-out;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.skill-tag {
+  padding: var(--spacing-1) var(--spacing-3);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  transition: var(--transition-fast);
+}
+
+.skill-tag:hover {
+  border-color: var(--metgo-primary);
+  color: var(--metgo-primary);
+}
+
+/* ===== Education Section ===== */
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.education-item {
+  display: flex;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  transition: var(--transition-normal);
+}
+
+.education-item:hover {
+  border-color: var(--metgo-primary);
+}
+
+.education-item.destacado {
+  border-left: 4px solid var(--metgo-primary);
+}
+
+.education-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--metgo-gradient-glow);
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--metgo-primary);
+  font-size: var(--font-size-lg);
+  flex-shrink: 0;
+}
+
+.education-content {
+  flex: 1;
+}
+
+.education-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-1);
+}
+
+.education-institution {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-2);
+}
+
+.education-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.education-period {
+  font-size: var(--font-size-xs);
+  color: var(--metgo-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.education-status {
+  display: inline-block;
+  padding: var(--spacing-1) var(--spacing-2);
+  background: var(--color-success);
+  color: white;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-sm);
+}
+
+.education-status.en-curso {
+  background: var(--metgo-primary);
+}
+
+/* ===== Certifications ===== */
+.certifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-6);
+}
+
+.certification-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.certification-item.destacado {
+  background: var(--metgo-gradient-glow);
+  border-color: rgba(0, 212, 170, 0.3);
+}
+
+.certification-badge {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--metgo-gradient);
+  border-radius: var(--radius-full);
+  color: white;
+  font-size: var(--font-size-base);
+}
+
+.certification-info {
+  flex: 1;
+}
+
+.certification-name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-1);
+}
+
+.certification-issuer {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.certification-date {
+  font-size: var(--font-size-xs);
+  color: var(--metgo-primary);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+/* ===== Experience Section ===== */
+.experience-timeline {
+  position: relative;
+  padding-left: var(--spacing-8);
+}
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--metgo-primary) 0%, var(--color-border) 100%);
+}
+
+.experience-item {
+  position: relative;
+  padding-bottom: var(--spacing-6);
+}
+
+.experience-item:last-child {
+  padding-bottom: 0;
+}
+
+.experience-dot {
+  position: absolute;
+  left: -25px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--metgo-primary);
+  border: 3px solid var(--color-bg-secondary);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 0 3px var(--metgo-primary);
+}
+
+.experience-item.destacado .experience-dot {
+  width: 16px;
+  height: 16px;
+  left: -27px;
+  box-shadow: 0 0 0 4px var(--metgo-primary), 0 0 20px rgba(0, 212, 170, 0.5);
+}
+
+.experience-card {
+  background: var(--color-bg-tertiary);
+  padding: var(--spacing-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  transition: var(--transition-normal);
+}
+
+.experience-card:hover {
+  border-color: var(--metgo-primary);
+  box-shadow: var(--shadow-metgo);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-3);
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.experience-cargo {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.experience-empresa {
+  font-size: var(--font-size-sm);
+  color: var(--metgo-primary);
+  margin-top: var(--spacing-1);
+}
+
+.experience-periodo {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  background: var(--color-bg-secondary);
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.experience-logros {
+  list-style: none;
+  margin-top: var(--spacing-3);
+}
+
+.experience-logros li {
+  position: relative;
+  padding-left: var(--spacing-5);
+  margin-bottom: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.experience-logros li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--metgo-primary);
+  font-weight: bold;
+}
+
+.experience-logros li:last-child {
+  margin-bottom: 0;
+}
+
+.experience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-4);
+  padding-top: var(--spacing-3);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ===== Projects Section ===== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-5);
+}
+
+.project-card {
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: var(--transition-normal);
+}
+
+.project-card:hover {
+  border-color: var(--metgo-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-metgo);
+}
+
+.project-card.destacado {
+  border: 2px solid var(--metgo-primary);
+}
+
+.project-card.destacado .project-header {
+  background: var(--metgo-gradient-glow);
+}
+
+.project-header {
+  padding: var(--spacing-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-2);
+  background: var(--metgo-gradient);
+  color: white;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-2);
+}
+
+.project-name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-1);
+}
+
+.project-type {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+.project-body {
+  padding: var(--spacing-4);
+}
+
+.project-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-4);
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-4);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--metgo-gradient);
+  color: white;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
+}
+
+.project-link:hover {
+  transform: translateX(4px);
+  text-decoration: none;
+  box-shadow: var(--shadow-metgo);
+}
+
+/* ===== Languages Section ===== */
+.languages-grid {
+  display: flex;
+  gap: var(--spacing-6);
+}
+
+.language-item {
+  flex: 1;
+  text-align: center;
+  padding: var(--spacing-4);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.language-circle {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--spacing-3);
+  position: relative;
+}
+
+.language-circle svg {
+  transform: rotate(-90deg);
+}
+
+.language-circle-bg {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 6;
+}
+
+.language-circle-fill {
+  fill: none;
+  stroke: var(--metgo-primary);
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease-out;
+}
+
+.language-percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font
+Claude Opus 4.5
+continuar con la linea de
+transform: translate(-50%, -50%);
+font
+
+
+Continuando desde donde quedó el código:
+
+7. src/assets/styles/components.css (Continuación)
+css
+.language-percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--metgo-primary);
+}
+
+.language-name {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-1);
+}
+
+.language-level {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ===== Additional Info Section ===== */
+.additional-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-4);
+}
+
+.additional-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.additional-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--metgo-gradient-glow);
+  border-radius: var(--radius-md);
+  color: var(--metgo-primary);
+  font-size: var(--font-size-sm);
+}
+
+.additional-info {
+  flex: 1;
+}
+
+.additional-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.additional-value {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ===== CV Footer / Brand ===== */
+.cv-footer {
+  margin-top: var(--spacing-10);
+  padding-top: var(--spacing-6);
+  border-top: 2px solid var(--color-border);
+  text-align: center;
+}
+
+.cv-footer-brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.cv-footer-logo {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-extrabold);
+  background: var(--metgo-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cv-footer-tagline {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.cv-footer-website {
+  margin-top: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--metgo-primary);
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 768px) {
+  .cv-header {
+    padding-bottom: var(--spacing-6);
+    margin-bottom: var(--spacing-6);
+  }
+  
+  .cv-name {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .cv-title {
+    font-size: var(--font-size-base);
+  }
+  
+  .contact-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-2);
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .education-item {
+    flex-direction: column;
+  }
+  
+  .experience-timeline {
+    padding-left: var(--spacing-6);
+  }
+  
+  .experience-header {
+    flex-direction: column;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .languages-grid {
+    flex-direction: column;
+  }
+  
+  .additional-grid {
+    grid-template-columns: 1fr;
+  }
+}
+8. src/assets/styles/animations.css
+css
+/**
+ * METGO_3D VIRTUALIZE - Animations
+ */
+
+/* ===== Keyframes ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 212, 170, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 212, 170, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ===== Animation Classes ===== */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ===== Stagger Delays ===== */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+.stagger-7 { animation-delay: 0.7s; }
+.stagger-8 { animation-delay: 0.8s; }
+
+/* ===== Initial State for Animations ===== */
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+}
+
+/* ===== Hover Animations ===== */
+.hover-lift {
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-glow {
+  transition: box-shadow var(--transition-normal);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--shadow-metgo);
+}
+
+.hover-scale {
+  transition: transform var(--transition-fast);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Loading Skeleton ===== */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-tertiary) 25%,
+    var(--color-border) 50%,
+    var(--color-bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+}
+
+.skeleton-title {
+  height: 1.5em;
+  width: 60%;
+  margin-bottom: 0.75em;
+}
+
+.skeleton-circle {
+  border-radius: 50%;
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+9. src/assets/styles/print.css
+css
+/**
+ * METGO_3D VIRTUALIZE - Print Styles
+ */
+
+@media print {
+  /* ===== Page Setup ===== */
+  @page {
+    size: A4;
+    margin: 15mm 10mm;
+  }
+  
+  /* ===== Hide Non-Essential Elements ===== */
+  .app-header,
+  .app-footer,
+  .control-panel,
+  .theme-toggle,
+  .no-print,
+  button,
+  .btn {
+    display: none !important;
+  }
+  
+  /* ===== Reset Background ===== */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  /* ===== Container Adjustments ===== */
+  .app-wrapper,
+  .app-main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .cv-container {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  
+  .cv-container::before {
+    display: none !important;
+  }
+  
+  .cv-preview {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  /* ===== Typography ===== */
+  .cv-name {
+    font-size: 18pt !important;
+    color: #1a365d !important;
+  }
+  
+  .cv-title {
+    font-size: 12pt !important;
+    color: #00a896 !important;
+  }
+  
+  .section-title {
+    font-size: 11pt !important;
+    color: #1a365d !important;
+    border-bottom: 2px solid #00d4aa !important;
+    padding-bottom: 4px !important;
+    margin-bottom: 10px !important;
+    page-break-after: avoid !important;
+  }
+  
+  .section-icon {
+    display: none !important;
+  }
+  
+  /* ===== Colors ===== */
+  .metgo-primary,
+  [class*="metgo-primary"] {
+    color: #00a896 !important;
+  }
+  
+  /* ===== Links ===== */
+  a {
+    color: #00a896 !important;
+    text-decoration: none !important;
+  }
+  
+  a[href]::after {
+    content: none !important;
+  }
+  
+  /* ===== Sections ===== */
+  .cv-section {
+    margin-bottom: 12pt !important;
+    page-break-inside: avoid !important;
+  }
+  
+  /* ===== Profile ===== */
+  .profile-content {
+    background: #f8f9fa !important;
+    border-left: 3px solid #00d4aa !important;
+    padding: 10px 15px !important;
+  }
+  
+  .profile-text {
+    font-size: 10pt !important;
+    color: #333 !important;
+  }
+  
+  .highlight-tag {
+    background: #e8f5f2 !important;
+    border: 1px solid #00d4aa !important;
+    color: #00796b !important;
+    padding: 2px 8px !important;
+    font-size: 8pt !important;
+  }
+  
+  /* ===== Skills ===== */
+  .skills-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  
+  .skill-category {
+    background: #f8f9fa !important;
+    border: 1px solid #dee2e6 !important;
+    padding: 10px !important;
+    page-break-inside: avoid !important;
+  }
+  
+  .skill-bar {
+    display: none !important;
+  }
+  
+  .skill-tag {
+    background: white !important;
+    border: 1px solid #dee2e6 !important;
+    font-size: 8pt !important;
+    padding: 2px 6px !important;
+  }
+  
+  /* ===== Education ===== */
+  .education-item {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    border-radius: 0 !important;
+    padding: 8px 0 !important;
+    page-break-inside: avoid !important;
+  }
+  
+  .education-icon {
+    display: none !important;
+  }
+  
+  .education-title {
+    font-size: 10pt !important;
+    font-weight: bold !important;
+  }
+  
+  .education-institution {
+    font-size: 9pt !important;
+  }
+  
+  .education-status {
+    background: #00d4aa !important;
+    color: white !important;
+    font-size: 7pt !important;
+    padding: 1px 6px !important;
+  }
+  
+  /* ===== Certifications ===== */
+  .certification-item {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px dotted #dee2e6 !important;
+    padding: 6px 0 !important;
+  }
+  
+  .certification-badge {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 10pt !important;
+  }
+  
+  /* ===== Experience ===== */
+  .experience-timeline::before {
+    display: none !important;
+  }
+  
+  .experience-timeline {
+    padding-left: 0 !important;
+  }
+  
+  .experience-dot {
+    display: none !important;
+  }
+  
+  .experience-item {
+    page-break-inside: avoid !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 12px !important;
+    border-bottom: 1px solid #dee2e6 !important;
+  }
+  
+  .experience-card {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  
+  .experience-cargo {
+    font-size: 11pt !important;
+    color: #1a365d !important;
+  }
+  
+  .experience-empresa {
+    font-size: 10pt !important;
+    color: #00796b !important;
+  }
+  
+  .experience-periodo {
+    background: #e8f5f2 !important;
+    color: #00796b !important;
+    font-size: 8pt !important;
+  }
+  
+  .experience-logros li {
+    font-size: 9pt !important;
+    margin-bottom: 4px !important;
+  }
+  
+  .experience-tags {
+    display: none !important;
+  }
+  
+  /* ===== Projects ===== */
+  .projects-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  
+  .project-card {
+    background: #f8f9fa !important;
+    border: 1px solid #dee2e6 !important;
+    page-break-inside: avoid !important;
+  }
+  
+  .project-header {
+    padding: 8px !important;
+  }
+  
+  .project-body {
+    padding: 8px !important;
+  }
+  
+  .project-name {
+    font-size: 10pt !important;
+  }
+  
+  .project-description {
+    font-size: 9pt !important;
+  }
+  
+  .project-link {
+    background: transparent !important;
+    color: #00796b !important;
+    padding: 0 !important;
+    font-size: 8pt !important;
+  }
+  
+  /* ===== Languages ===== */
+  .languages-grid {
+    display: flex !important;
+    gap: 20px !important;
+  }
+  
+  .language-circle {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  
+  .language-percentage {
+    font-size: 10pt !important;
+  }
+  
+  /* ===== Additional Info ===== */
+  .additional-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+  
+  .additional-item {
+    background: #f8f9fa !important;
+    padding: 6px !important;
+    font-size: 8pt !important;
+  }
+  
+  .additional-icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  
+  /* ===== Footer ===== */
+  .cv-footer {
+    margin-top: 20px !important;
+    padding-top: 10px !important;
+    border-top: 2px solid #00d4aa !important;
+  }
+  
+  .cv-footer-logo {
+    font-size: 14pt !important;
+    color: #00a896 !important;
+    -webkit-text-fill-color: #00a896 !important;
+  }
+  
+  /* ===== Page Breaks ===== */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid !important;
+  }
+  
+  .cv-header {
+    page-break-after: avoid !important;
+  }
+  
+  /* ===== Orphans and Widows ===== */
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+}
+🧩 COMPONENTES VUE
+10. src/main.js
+javascript
+/**
+ * METGO_3D VIRTUALIZE - CV Generator
+ * Main Entry Point
+ */
+
+import { createApp } from 'vue'
+import App from './App.vue'
+
+// Styles
+import './assets/styles/main.css'
+
+// Create and mount app
+const app = createApp(App)
+
+// Global error handler
+app.config.errorHandler = (err, vm, info) => {
+  console.error('Error:', err)
+  console.error('Component:', vm)
+  console.error('Info:', info)
+}
+
+// Performance monitoring
+app.config.performance = import.meta.env.DEV
+
+app.mount('#app')
+
+console.log('%c🚀 METGO_3D VIRTUALIZE', 'color: #00d4aa; font-size: 20px; font-weight: bold;')
+console.log('%c📄 CV Generator v2.0.0', 'color: #a0aec0; font-size: 12px;')
+console.log('%c🌐 https://www.metgo3d.com', 'color: #00d4aa; font-size: 12px;')
+11. src/App.vue
+vue
+<template>
+  <div class="app-wrapper" :class="{ 'metgo-bg': theme === 'metgo' }" :data-theme="theme">
+    <!-- App Header -->
+    <AppHeader 
+      :brand="brandConfig" 
+      @toggle-theme="toggleTheme"
+      :current-theme="theme"
+    />
+    
+    <!-- Main Content -->
+    <main class="app-main">
+      <div class="container">
+        <!-- Control Panel -->
+        <ControlPanel 
+          @download-pdf="downloadPDF"
+          @print-cv="printCV"
+          :is-generating="isGenerating"
+          :brand="brandConfig"
+        />
+        
+        <!-- CV Container -->
+        <div class="cv-container animate-fade-in-up">
+          <CVPreview 
+            ref="cvPreviewRef" 
+            :data="cvData" 
+            :brand="brandConfig"
+          />
+        </div>
+      </div>
+    </main>
+    
+    <!-- App Footer -->
+    <AppFooter :brand="brandConfig" />
+  </div>
+</template>
+
+<script>
+import { ref, onMounted } from 'vue'
+import { cvData, brandConfig } from './data/cvData.js'
+import { usePdfGenerator } from './composables/usePdfGenerator.js'
+import { useTheme } from './composables/useTheme.js'
+
+// Layout Components
+import AppHeader from './components/layout/AppHeader.vue'
+import AppFooter from './components/layout/AppFooter.vue'
+import ControlPanel from './components/layout/ControlPanel.vue'
+
+// CV Components
+import CVPreview from './components/cv/CVPreview.vue'
+
+export default {
+  name: 'App',
+  
+  components: {
+    AppHeader,
+    AppFooter,
+    ControlPanel,
+    CVPreview
+  },
+  
+  setup() {
+    // Refs
+    const cvPreviewRef = ref(null)
+    
+    // Composables
+    const { isGenerating, generatePDF } = usePdfGenerator()
+    const { theme, toggleTheme, initTheme } = useTheme()
+    
+    // Methods
+    const downloadPDF = async () => {
+      if (cvPreviewRef.value) {
+        await generatePDF(cvPreviewRef.value.$el, {
+          filename: `CV_Miguel_Lucero_METGO3D_${new Date().toISOString().split('T')[0]}.pdf`,
+          brand: brandConfig
+        })
+      }
+    }
+    
+    const printCV = () => {
+      window.print()
+    }
+    
+    // Lifecycle
+    onMounted(() => {
+      initTheme()
+    })
+    
+    return {
+      cvPreviewRef,
+      cvData,
+      brandConfig,
+      isGenerating,
+      theme,
+      toggleTheme,
+      downloadPDF,
+      printCV
+    }
+  }
+}
+</script>
+12. src/composables/usePdfGenerator.js
+javascript
+/**
+ * METGO_3D VIRTUALIZE - PDF Generator Composable
+ */
+
+import { ref } from 'vue'
+
+export function usePdfGenerator() {
+  const isGenerating = ref(false)
+  const error = ref(null)
+  
+  /**
+   * Generate PDF from HTML element
+   * @param {HTMLElement} element - DOM element to convert
+   * @param {Object} options - Configuration options
+   */
+  const generatePDF = async (element, options = {}) => {
+    isGenerating.value = true
+    error.value = null
+    
+    const defaultOptions = {
+      filename: 'CV_METGO3D.pdf',
+      margin: [10, 10, 10, 10],
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        letterRendering: true,
+        logging: false,
+        backgroundColor: '#ffffff'
+      },
+      jsPDF: {
+        unit: 'mm',
+        format: 'a4',
+        orientation: 'portrait',
+        compress: true
+      },
+      pagebreak: { 
+        mode: ['avoid-all', 'css', 'legacy'],
+        before: '.page-break-before',
+        after: '.page-break-after',
+        avoid: '.page-break-avoid'
+      }
+    }
+    
+    const mergedOptions = {
+      ...defaultOptions,
+      ...options,
+      html2canvas: { ...defaultOptions.html2canvas, ...options.html2canvas },
+      jsPDF: { ...defaultOptions.jsPDF, ...options.jsPDF }
+    }
+    
+    try {
+      // Dynamic import for code splitting
+      const html2pdf = (await import('html2pdf.js')).default
+      
+      // Clone element for PDF generation (to avoid modifying the original)
+      const clonedElement = element.cloneNode(true)
+      
+      // Apply print-specific styles
+      clonedElement.style.width = '210mm'
+      clonedElement.style.padding = '10mm'
+      clonedElement.style.backgroundColor = '#ffffff'
+      
+      // Generate PDF
+      await html2pdf()
+        .set(mergedOptions)
+        .from(element)
+        .save()
+      
+      // Analytics tracking (optional)
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'download_pdf', {
+          event_category: 'CV',
+          event_label: options.filename
+        })
+      }
+      
+      return true
+    } catch (err) {
+      console.error('Error generating PDF:', err)
+      error.value = err.message || 'Error al generar el PDF'
+      
+      // Show user-friendly error
+      alert(`Error al generar el PDF: ${error.value}\n\nPor favor, intente de nuevo o use la opción de imprimir.`)
+      
+      return false
+    } finally {
+      isGenerating.value = false
+    }
+  }
+  
+  /**
+   * Generate PDF with custom styling
+   */
+  const generateStyledPDF = async (element, options = {}) => {
+    // Add temporary print styles
+    const styleElement = document.createElement('style')
+    styleElement.id = 'pdf-temp-styles'
+    styleElement.textContent = `
+      .cv-preview {
+        font-size: 11pt !important;
+      }
+      .skill-bar {
+        display: none !important;
+      }
+      .animate-glow,
+      .animate-float {
+        animation: none !important;
+      }
+    `
+    document.head.appendChild(styleElement)
+    
+    try {
+      const result = await generatePDF(element, options)
+      return result
+    } finally {
+      // Remove temporary styles
+      document.getElementById('pdf-temp-styles')?.remove()
+    }
+  }
+  
+  return {
+    isGenerating,
+    error,
+    generatePDF,
+    generateStyledPDF
+  }
+}
+13. src/composables/useTheme.js
+javascript
+/**
+ * METGO_3D VIRTUALIZE - Theme Composable
+ */
+
+import { ref, watch } from 'vue'
+
+const THEME_KEY = 'metgo3d-cv-theme'
+const THEMES = ['light', 'dark', 'metgo']
+
+export function useTheme() {
+  const theme = ref('light')
+  
+  /**
+   * Initialize theme from localStorage or system preference
+   */
+  const initTheme = () => {
+    const savedTheme = localStorage.getItem(THEME_KEY)
+    
+    if (savedTheme && THEMES.includes(savedTheme)) {
+      theme.value = savedTheme
+    } else if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
+      theme.value = 'dark'
+    }
+    
+    applyTheme(theme.value)
+  }
+  
+  /**
+   * Apply theme to document
+   */
+  const applyTheme = (themeName) => {
+    document.documentElement.setAttribute('data-theme', themeName)
+    
+    // Update meta theme-color
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+    const colors = {
+      light: '#f8fafc',
+      dark: '#1a1a2e',
+      metgo: '#0d0d1a'
+    }
+    
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', colors[themeName] || colors.light)
+    }
+  }
+  
+  /**
+   * Toggle between themes
+   */
+  const toggleTheme = () => {
+    const currentIndex = THEMES.indexOf(theme.value)
+    const nextIndex = (currentIndex + 1) % THEMES.length
+    theme.value = THEMES[nextIndex]
+  }
+  
+  /**
+   * Set specific theme
+   */
+  const setTheme = (themeName) => {
+    if (THEMES.includes(themeName)) {
+      theme.value = themeName
+    }
+  }
+  
+  // Watch for theme changes
+  watch(theme, (newTheme) => {
+    localStorage.setItem(THEME_KEY, newTheme)
+    applyTheme(newTheme)
+  })
+  
+  // Listen for system theme changes
+  if (typeof window !== 'undefined') {
+    window.matchMedia?.('(prefers-color-scheme: dark)')
+      .addEventListener('change', (e) => {
+        if (!localStorage.getItem(THEME_KEY)) {
+          theme.value = e.matches ? 'dark' : 'light'
+        }
+      })
+  }
+  
+  return {
+    theme,
+    themes: THEMES,
+    initTheme,
+    toggleTheme,
+    setTheme
+  }
+}
+14. src/components/layout/AppHeader.vue
+vue
+<template>
+  <header class="app-header no-print">
+    <div class="container">
+      <div class="header-content">
+        <!-- Brand -->
+        <div class="header-brand">
+          <div class="brand-logo animate-glow">
+            <span class="brand-name">{{ brand.name }}</span>
+            <span class="brand-tagline">{{ brand.tagline }}</span>
+          </div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="header-nav">
+          <a :href="brand.website" target="_blank" class="nav-link">
+            <i class="fas fa-globe"></i>
+            <span>Web</span>
+          </a>
+          <a :href="brand.social.github" target="_blank" class="nav-link">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a :href="brand.social.linkedin" target="_blank" class="nav-link">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+        </nav>
+        
+        <!-- Theme Toggle -->
+        <div class="header-actions">
+          <button 
+            class="theme-toggle" 
+            @click="$emit('toggle-theme')"
+            :title="`Tema actual: ${currentTheme}`"
+          >
+            <i v-if="currentTheme === 'light'" class="fas fa-moon"></i>
+            <i v-else-if="currentTheme === 'dark'" class="fas fa-sun"></i>
+            <i v-else class="fas fa-palette"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+</template>
+
+<script>
+export default {
+  name: 'AppHeader',
+  
+  props: {
+    brand: {
+      type: Object,
+      required: true
+    },
+    currentTheme: {
+      type: String,
+      default: 'light'
+    }
+  },
+  
+  emits: ['toggle-theme']
+}
+</script>
+
+<style scoped>
+.app-header {
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-4) 0;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  backdrop-filter: blur(10px);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-name {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-extrabold);
+  background: var(--metgo-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand-tagline {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-tertiary);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-3);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--metgo-primary);
+  background: var(--metgo-gradient-glow);
+  text-decoration: none;
+}
+
+.nav-link i {
+  font-size: var(--font-size-base);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  border-color: var(--metgo-primary);
+  color: var(--metgo-primary);
+  box-shadow: var(--shadow-metgo);
+}
+
+@media (max-width: 768px) {
+  .header-nav {
+    display: none;
+  }
+  
+  .nav-link span {
+    display: none;
+  }
+}
+</style>
+15. src/components/layout/ControlPanel.vue
+vue
+<template>
+  <div class="control-panel no-print">
+    <div class="control-panel-content">
+      <!-- Title -->
+      <div class="control-title">
+        <h1>
+          <i class="fas fa-file-alt"></i>
+          Currículum Vitae Profesional
+        </h1>
+        <p>Generado con <strong>{{ brand.fullName }}</strong></p>
+      </div>
+      
+      <!-- Actions -->
+      <div class="control-actions">
+        <button 
+          class="btn btn-secondary" 
+          @click="$emit('print-cv')"
+          title="Imprimir CV"
+        >
+          <i class="fas fa-print"></i>
+          <span>Imprimir</span>
+        </button>
+        
+        <button 
+          class="btn btn-primary" 
+          @click="$emit('download-pdf')"
+          :disabled="isGenerating"
+          title="Descargar como PDF"
+        >
+          <template v-if="isGenerating">
+            <span class="spinner"></span>
+            <span>Generando...</span>
+          </template>
+          <template v-else>
+            <i class="fas fa-download"></i>
+            <span>Descargar PDF</span>
+          </template>
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ControlPanel',
+  
+  props: {
+    isGenerating: {
+      type: Boolean,
+      default: false
+    },
+    brand: {
+      type: Object,
+      required: true
+    }
+  },
+  
+  emits: ['download-pdf', 'print-cv']
+}
+</script>
+
+<style scoped>
+.control-panel {
+  margin-bottom: var(--spacing-8);
+}
+
+.control-panel-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  padding: var(--spacing-6);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+
+.control-title h1 {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-1);
+}
+
+.control-title h1 i {
+  color: var(--metgo-primary);
+}
+
+.control-title p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.control-title strong {
+  color: var(--metgo-primary);
+}
+
+.control-actions {
+  display: flex;
+  gap: var(--spacing-3);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-5);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--metgo-gradient);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 212, 170, 0.4);
+}
+
+.btn-secondary {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--metgo-primary);
+  color: var(--metgo-primary);
+}
+
+/* Spinner */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .control-panel-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .control-actions {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .btn span {
+    display: none;
+  }
+}
+</style>
+16. src/components/layout/AppFooter.vue
+vue
+<template>
+  <footer class="app-footer no-print">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-text">{{ brand.name }}</span>
+            <span class="logo-tagline">{{ brand.tagline }}</span>
+          </div>
+          <p class="footer-description">
+            Soluciones tecnológicas para visualización y análisis de datos
+          </p>
+        </div>
+        
+        <!-- Links -->
+        <div class="footer-links">
+          <h4>Enlaces</h4>
+          <a :href="brand.website" target="_blank">
+            <i class="fas fa-globe"></i> {{ brand.website.replace('https://', '') }}
+          </a>
+          <a :href="brand.social.github" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a :href="brand.social.linkedin" target="_blank">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a :href="brand.social.portfolio" target="_blank">
+            <i class="fas fa-briefcase"></i> Portafolio
+          </a>
+        </div>
+        
+        <!-- Contact -->
+        <div class="footer-contact">
+          <h4>Contacto</h4>
+          <p>
+            <i class="fas fa-envelope"></i>
+            miguellucerogatica@gmail.com
+          </p>
+          <p>
+            <i class="fas fa-phone"></i>
+            +56 9 9931 9162
+          </p>
+          <p>
+            <i class="fas fa-map-marker-alt"></i>
+            Quilpué, Chile
+          </p>
+        </div>
+      </div>
+      
+      <!-- Copyright -->
+      <div class="footer-bottom">
+        <p>
+          © {{ currentYear }} <strong>{{ brand.fullName }}</strong>. 
+          Todos los derechos reservados.
+        </p>
+        <p class="footer-tech">
+          Desarrollado con 
+          <i class="fab fa-vuejs" style="color: #42b883;"></i> Vue.js
+        </p>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<script>
+import { computed } from 'vue'
+
+export default {
+  name: 'AppFooter',
+  
+  props: {
+    brand: {
+      type: Object,
+      required: true
+    }
+  },
+  
+  setup() {
+    const currentYear = computed(() => new Date().getFullYear())
+    
+    return { currentYear }
+  }
+}
+</script>
+
+<style scoped>
+.app-footer {
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+  padding: var(--spacing-10) 0 var(--spacing-6);
+  margin-top: var(--spacing-10);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--spacing-8);
+  margin-bottom: var(--spacing-8);
+}
+
+.footer-brand {
+  max-width: 300px;
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacing-3);
+}
+
+.logo-text {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-extrabold);
+  background: var(--metgo-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo-tagline {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.footer-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.footer-links h4,
+.footer-contact h4 {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-links a {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-2);
+  transition: var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--metgo-primary);
+  text-decoration: none;
+  transform: translateX(4px);
+}
+
+.footer-links a i {
+  width: 16px;
+  text-align: center;
+}
+
+.footer-contact p {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-2);
+}
+
+.footer-contact p i {
+  width: 16px;
+  text-align: center;
+  color: var(--metgo-primary);
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-bottom p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+}
+
+.footer-bottom strong {
+  color: var(--metgo-primary);
+}
+
+.footer-tech {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .footer-brand {
+    max-width: 100%;
+  }
+  
+  .footer-links a,
+  .footer-contact p {
+    justify-content: center;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--spacing-2);
+    text-align: center;
+  }
+}
+</style>
+📄 COMPONENTES DEL CV
+17. src/components/cv/CVPreview.vue
+vue
+<template>
+  <div class="cv-preview">
+    <!-- Header with Brand -->
+    <CVHeader :personal="data.personal" :brand="brand" />
+    
+    <!-- Profile Section -->
+    <CVProfile :perfil="data.perfil" />
+    
+    <!-- Skills Section -->
+    <CVSkills :competencias="data.competencias" />
+    
+    <!-- Education & Certifications -->
+    <CVEducation 
+      :educacion="data.educacion" 
+      :certificaciones="data.certificaciones" 
+    />
+    
+    <!-- Experience Section -->
+    <CVExperience :experiencia="data.experiencia" />
+    
+    <!-- Projects Section -->
+    <CVProjects :proyectos="data.proyectos" />
+    
+    <!-- Languages & Additional -->
+    <section class="cv-section">
+      <div class="section-header">
+        <div class="section-icon">
+          <i class="fas fa-info-circle"></i>
+        </div>
+        <h2 class="section-title">Información Adicional</h2>
+      </div>
+      
+      <!-- Languages -->
+      <div class="languages-grid">
+        <div 
+          v-for="(lang, index) in data.idiomas" 
+          :key="index" 
+          class="language-item"
+        >
+          <div class="language-circle">
+            <svg width="80" height="80" viewBox="0 0 80 80">
+              <circle 
+                class="language-circle-bg" 
+                cx="40" cy="40" r="35"
+              />
+              <circle 
+                class="language-circle-fill" 
+                cx="40" cy="40" r="35"
+                :stroke-dasharray="`${lang.porcentaje * 2.2} 220`"
+                stroke-dashoffset="0"
+              />
+            </svg>
+            <span class="language-percentage">{{ lang.porcentaje }}%</span>
+          </div>
+          <p class="language-name">{{ lang.idioma }}</p>
+          <p class="language-level">{{ lang.nivel }}</p>
+        </div>
+      </div>
+      
+      <!-- Additional Info -->
+      <div class="additional-grid" style="margin-top: var(--spacing-6);">
+        <div class="additional-item">
+          <div class="additional-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="additional-info">
+            <span class="additional-label">Disponibilidad</span>
+            <span class="additional-value">{{ data.adicional.disponibilidad }}</span>
+          </div>
+        </div>
+        
+        <div class="additional-item">
+          <div class="additional-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="additional-info">
+            <span class="additional-label">Relocalización</span>
+            <span class="additional-value">{{ data.adicional.relocacion }}</span>
+          </div>
+        </div>
+        
+        <div class="additional-item">
+          <div class="additional-icon">
+            <i class="fas fa-car"></i>
+          </div>
+          <div class="additional-info">
+            <span class="additional-label">Licencia</span>
+            <span class="additional-value">{{ data.adicional.licencia }}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CV Brand Footer -->
+    <CVBrand :brand="brand" />
+  </div>
+</template>
+
+<script>
+import CVHeader from './CVHeader.vue'
+import CVProfile from './CVProfile.vue'
+import CVSkills from './CVSkills.vue'
+import CVEducation from './CVEducation.vue'
+import CVExperience from './CVExperience.vue'
+import CVProjects from './CVProjects.vue'
+import CVBrand from './CVBrand.vue'
+
+export default {
+  name: 'CVPreview',
+  
+  components: {
+    CVHeader,
+    CVProfile,
+    CVSkills,
+    CVEducation,
+    CVExperience,
+    CVProjects,
+    CVBrand
+  },
+  
+  props: {
+    data: {
+      type: Object,
+      required: true
+    },
+    brand: {
+      type: Object,
+      required: true
+    }
+  }
+}
+</script>
+18. src/components/cv/CVHeader.vue
+vue
+<template>
+  <header class="cv-header">
+    <!-- Brand Badge -->
+    <div class="cv-brand">
+      <i class="fas fa-cube"></i>
+      <span class="cv-brand-text">{{ brand.fullName }}</span>
+    </div>
+    
+    <!-- Name -->
+    <h1 class="cv-name">{{ personal.nombre }}</h1>
+    
+    <!-- Title -->
+    <p class="cv-title">{{ personal.titulo }}</p>
+    <p class="cv-subtitle">{{ personal.subtitulo }}</p>
+    
+    <!-- Contact Info - Row 1 -->
+    <div class="contact-grid">
+      <span class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        {{ personal.ubicacion }}
+      </span>
+      <span class="contact-item">
+        <i class="fas fa-phone"></i>
+        {{ personal.telefono }}
+      </span>
+      <span class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <a :href="'mailto:' + personal.email">{{ personal.email }}</a>
+      </span>
+    </div>
+    
+    <!-- Contact Info - Row 2 (Links) -->
+    <div class="contact-grid" style="margin-top: var(--spacing-3);">
+      <span class="contact-item">
+        <i class="fab fa-linkedin"></i>
+        <a :href="personal.linkedinUrl" target="_blank">{{ personal.linkedin }}</a>
+      </span>
+      <span class="contact-item">
+        <i class="fab fa-github"></i>
+        <a :href="personal.githubUrl" target="_blank">{{ personal.github }}</a>
+      </span>
+      <span class="contact-item">
+        <i class="fas fa-globe"></i>
+        <a :href="personal.websiteUrl" target="_blank">{{ personal.website }}</a>
+      </span>
+    </div>
+    
+    <!-- Availability Badge -->
+    <div class="availability-badge" style="margin-top: var(--spacing-4);">
+      <i class="fas fa-check-circle"></i>
+      <span>Disponibilidad: {{ personal.disponibilidad }} | {{ personal.modalidad }}</span>
+    </div>
+  </header>
+</template>
+
+<script>
+export default {
+  name: 'CVHeader',
+  
+  props: {
+    personal: {
+      type: Object,
+      required: true
+    },
+    brand: {
+      type: Object,
+      required: true
+    }
+  }
+}
+</script>
+
+<style scoped>
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--color-success);
+  color: white;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-full);
+}
+
+.availability-badge i {
+  font-size: 12px;
+}
+</style>
+19. src/components/cv/CVProfile.vue
+vue
+<template>
+  <section class="cv-section">
+    <div class="section-header">
+      <div class="section-icon">
+        <i class="fas fa-user"></i>
+      </div>
+      <h2 class="section-title">Perfil Profesional</h2>
+    </div>
+    
+    <div class="profile-content">
+      <p class="profile-text">{{ perfil.resumen }}</p>
+      
+      <p class="profile-text" style="margin-top: var(--spacing-3);">
+        {{ perfil.propuestaValor }}
+      </p>
+      
+      <!-- Highlights -->
+      <div class="profile-highlights">
+        <span 
+          v-for="(item, index) in perfil.destacados" 
+          :key="index" 
+          class="highlight-tag"
+        >
+          <i class="fas fa-check"></i>
+          {{ item }}
+        </span>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  name: 'CVProfile',
+  
+  props: {
+    perfil: {
+      type: Object,
+      required: true
+    }
+  }
+}
+</script>
+20. src/components/cv/CVSkills.vue
+vue
+<template>
+  <section class="cv-section">
+    <div class="section-header">
+      <div class="section-icon">
+        <i class="fas fa-cogs"></i>
+      </div>
+      <h2 class="section-title">Competencias Técnicas</h2>
+    </div>
+    
+    <div class="skills-grid">
+      <!-- Programación -->
+      <div class="skill-category">
+        <div class="skill-category-header">
+          <div class="skill-category-icon">
+            <i :class="'fas ' + competencias.programacion.icon"></i>
+          </div>
+          <h3 class="skill-category-title">{{ competencias.programacion.titulo }}</h3>
+        </div>
+        <div class="skill-list">
+          <div 
+            v-for="(skill, index) in competencias.programacion.skills" 
+            :key="index"
+            class="skill-item"
+          >
+            <span class="skill-name">
+              {{ skill.nombre }}
+              <i v-if="skill.certificado" class="fas fa-certificate certified" title="Certificado"></i>
+            </span>
+            <div class="skill-bar">
+              <div 
+                class="skill-bar-fill" 
+                :style="{ width: skill.nivel + '%' }"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Data Science -->
+      <div class="skill-category">
+        <div class="skill-category-header">
+          <div class="skill-category-icon">
+            <i :class="'fas ' + competencias.datascience.icon"></i>
+          </div>
+          <h3 class="skill-category-title">{{ competencias.datascience.titulo }}</h3>
+        </div>
+        <div class="skill-list">
+          <div 
+            v-for="(skill, index) in competencias.datascience.skills" 
+            :key="index"
+            class="skill-item"
+          >
+            <span class="skill-name">{{ skill.nombre }}</span>
+            <div class="skill-bar">
+              <div 
+                class="skill-bar-fill" 
+                :style="{ width: skill.nivel + '%' }"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Herramientas -->
+      <div class="skill-category">
+        <div class="skill-category-header">
+          <div class="skill-category-icon">
+            <i :class="'fas ' + competencias.herramientas.icon"></i>
+          </div>
+          <h3 class="skill-category-title">{{ competencias.herramientas.titulo }}</h3>
+        </div>
+        <div class="skill-list">
+          <div 
+            v-for="(skill, index) in competencias.herramientas.skills" 
+            :key="index"
+            class="skill-item"
+          >
+            <span class="skill-name">{{ skill.nombre }}</span>
+            <div class="skill-bar">
+              <div 
+                class="skill-bar-fill" 
+                :style="{ width: skill.nivel + '%' }"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Soft Skills -->
+      <div class="skill-category">
+        <div class="skill-category-header">
+          <div class="skill-category-icon">
+            <i :class="'fas ' + competencias.soft.icon"></i>
+          </div>
+          <h3 class="skill-category-title">{{ competencias.soft.titulo }}</h3>
+        </div>
+        <div class="skill-tags">
+          <span 
+            v-for="(skill, index) in competencias.soft.skills" 
+            :key="index"
+            class="skill-tag"
+          >
+            {{ skill }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  name: 'CVSkills',
+  
+  props: {
+    competencias: {
+      type: Object,
+      required: true
+    }
+  }
+}
+</script>
+21. src/components/cv/CVEducation.vue
+vue
+<template>
+  <section class="cv-section">
+    <div class="section-header">
+      <div class="section-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      
+Claude Opus 4.5
+continuar con el codigo en <i class="fas fa-graduation-cap"></i>
+</div>
+
+
+Continuando desde donde quedó el código:
+
+21. src/components/cv/CVEducation.vue (Continuación)
+vue
+<template>
+  <section class="cv-section">
+    <div class="section-header">
+      <div class="section-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <h2 class="section-title">Formación Académica</h2>
+    </div>
+    
+    <!-- Education List -->
+    <div class="education-list">
+      <div 
+        v-for="(item, index) in educacion" 
+        :key="index"
+        class="education-item"
+        :class="{ 'destacado': item.destacado }"
+      >
+        <div class="education-icon">
+          <i :class="getEducationIcon(item.tipo)"></i>
+        </div>
+        <div class="education-content">
+          <h4 class="education-title">{{ item.titulo }}</h4>
+          <p class="education-institution">{{ item.institucion }}</p>
+          <p v-if="item.descripcion" class="education-description">
+            {{ item.descripcion }}
+          </p>
+          <div class="education-meta">
+            <span class="education-period">
+              <i class="fas fa-calendar-alt"></i>
+              {{ item.periodo }}
+            </span>
+            <span 
+              class="education-status"
+              :class="{ 'en-curso': item.estado === 'En curso' }"
+            >
+              {{ item.estado }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Certifications -->
+    <div class="section-header" style="margin-top: var(--spacing-8);">
+      <div class="section-icon">
+        <i class="fas fa-certificate"></i>
+      </div>
+      <h2 class="section-title">Certificaciones</h2>
+    </div>
+    
+    <div class="certifications-list">
+      <div 
+        v-for="(cert, index) in certificaciones" 
+        :key="index"
+        class="certification-item"
+        :class="{ 'destacado': cert.destacado }"
+      >
+        <div class="certification-badge">
+          <i class="fas fa-award"></i>
+        </div>
+        <div class="certification-info">
+          <h4 class="certification-name">{{ cert.nombre }}</h4>
+          <p class="certification-issuer">
+            {{ cert.institucion }}
+            <span v-if="cert.credencial" class="certification-credential">
+              | ID: {{ cert.credencial }}
+            </span>
+          </p>
+        </div>
+        <div class="certification-meta">
+          <span class="certification-date">{{ cert.fecha }}</span>
+          <a 
+            v-if="cert.url" 
+            :href="cert.url" 
+            target="_blank" 
+            class="certification-verify"
+            title="Verificar credencial"
+          >
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  name: 'CVEducation',
+  
+  props: {
+    educacion: {
+      type: Array,
+      required: true
+    },
+    certificaciones: {
+      type: Array,
+      required: true
+    }
+  },
+  
+  methods: {
+    getEducationIcon(tipo) {
+      const icons = {
+        'tecnico': 'fas fa-tools',
+        'bootcamp': 'fas fa-laptop-code',
+        'diplomado': 'fas fa-scroll',
+        'profesional': 'fas fa-user-graduate',
+        'licenciatura': 'fas fa-university',
+        'magister': 'fas fa-hat-wizard',
+        'doctorado': 'fas fa-atom'
+      }
+      return icons[tipo] || 'fas fa-graduation-cap'
+    }
+  }
+}
+</script>
+
+<style scoped>
+.education-description {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin-top: var(--spacing-2);
+  line-height: var(--line-height-relaxed);
+}
+
+.certification-credential {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-xs);
+}
+
+.certification-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-2);
+}
+
+.certification-verify {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--metgo-gradient-glow);
+  border: 1px solid var(--metgo-primary);
+  border-radius: var(--radius-md);
+  color: var(--metgo-primary);
+  font-size: var(--font-size-xs);
+  transition: var(--transition-fast);
+}
+
+.certification-verify:hover {
+  background: var(--metgo-gradient);
+  color: white;
+  text-decoration: none;
+}
+</style>
+22. src/components/cv/CVExperience.vue
+vue
+<template>
+  <section class="cv-section">
+    <div class="section-header">
+      <div class="section-icon">
+        <i class="fas fa-briefcase"></i>
+      </div>
+      <h2 class="section-title">Experiencia Profesional</h2>
+    </div>
+    
+    <div class="experience-timeline">
+      <div 
+        v-for="(exp, index) in experiencia" 
+        :key="index"
+        class="experience-item"
+        :class="{ 'destacado': exp.destacado }"
+      >
+        <div class="experience-dot"></div>
+        
+        <div class="experience-card">
+          <div class="experience-header">
+            <div class="experience-title-group">
+              <h4 class="experience-cargo">{{ exp.cargo }}</h4>
+              <p class="experience-empresa">
+                {{ exp.empresa }}
+                <span v-if="exp.proyecto" class="experience-proyecto">
+                  - {{ exp.proyecto }}
+                </span>
+              </p>
+              <p class="experience-ubicacion">
+                <i class="fas fa-map-marker-alt"></i>
+                {{ exp.ubicacion }}
+              </p>
+            </div>
+            <div class="experience-meta">
+              <span class="experience-periodo">{{ exp.periodo }}</span>
+              <span class="experience-duracion">{{ exp.duracion }}</span>
+            </div>
+          </div>
+          
+          <ul class="experience-logros">
+            <li v-for="(logro, logroIndex) in exp.logros" :key="logroIndex">
+              <span class="logro-descripcion">{{ logro.descripcion }}</span>
+              <span v-if="logro.metrica" class="logro-metrica">
+                <i class="fas fa-chart-line"></i>
+                {{ logro.metrica }}
+              </span>
+            </li>
+          </ul>
+          
+          <div v-if="exp.tecnologias && exp.tecnologias.length" class="experience-tags">
+            <span 
+              v-for="(tech, techIndex) in exp.tecnologias" 
+              :key="techIndex"
+              class="skill-tag"
+            >
+              {{ tech }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  name: 'CVExperience',
+  
+  props: {
+    experiencia: {
+      type: Array,
+      required: true
+    }
+  }
+}
+</script>
+
+<style scoped>
+.experience-title-group {
+  flex: 1;
+}
+
+.experience-proyecto {
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-secondary);
+}
+
+.experience-ubicacion {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin-top: var(--spacing-1);
+}
+
+.experience-ubicacion i {
+  color: var(--metgo-primary);
+  font-size: 10px;
+}
+
+.experience-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-1);
+}
+
+.experience-duracion {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+.logro-descripcion {
+  flex: 1;
+}
+
+.logro-metrica {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-2);
+  background: var(--metgo-gradient-glow);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--metgo-primary);
+  white-space: nowrap;
+  margin-left: var(--spacing-2);
+}
+
+.logro-metrica i {
+  font-size: 10px;
+}
+
+.experience-logros li {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+</style>
+23. src/components/cv/CVProjects.vue
+vue
+<template>
+  <section class="cv-section">
+    <div class="section-header">
+      <div class="section-icon">
+        <i class="fas fa-rocket"></i>
+      </div>
+      <h2 class="section-title">Proyectos Destacados</h2>
+    </div>
+    
+    <div class="projects-grid">
+      <div 
+        v-for="(proyecto, index) in proyectos" 
+        :key="index"
+        class="project-card"
+        :class="{ 'destacado': proyecto.destacado }"
+      >
+        <div class="project-header">
+          <span v-if="proyecto.destacado" class="project-badge">
+            <i class="fas fa-star"></i>
+            Destacado
+          </span>
+          <h4 class="project-name">{{ proyecto.nombre }}</h4>
+          <p class="project-type">{{ proyecto.tipo }}</p>
+        </div>
+        
+        <div class="project-body">
+          <p class="project-description">{{ proyecto.descripcion }}</p>
+          
+          <!-- Technologies -->
+          <div class="project-tech">
+            <span 
+              v-for="(tech, techIndex) in proyecto.tecnologias" 
+              :key="techIndex"
+              class="skill-tag"
+            >
+              {{ tech }}
+            </span>
+          </div>
+          
+          <!-- Achievements -->
+          <ul v-if="proyecto.logros && proyecto.logros.length" class="project-achievements">
+            <li v-for="(logro, logroIndex) in proyecto.logros" :key="logroIndex">
+              <i class="fas fa-check"></i>
+              {{ logro }}
+            </li>
+          </ul>
+          
+          <!-- Status -->
+          <div class="project-status">
+            <span 
+              class="status-badge"
+              :class="getStatusClass(proyecto.estado)"
+            >
+              <i :class="getStatusIcon(proyecto.estado)"></i>
+              {{ proyecto.estado }}
+            </span>
+          </div>
+          
+          <!-- Links -->
+          <div class="project-links">
+            <a 
+              v-if="proyecto.url" 
+              :href="proyecto.url" 
+              target="_blank" 
+              class="project-link"
+            >
+              <i class="fas fa-external-link-alt"></i>
+              Ver proyecto
+            </a>
+            <a 
+              v-if="proyecto.github" 
+              :href="proyecto.github" 
+              target="_blank" 
+              class="project-link github"
+            >
+              <i class="fab fa-github"></i>
+              Código
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  name: 'CVProjects',
+  
+  props: {
+    proyectos: {
+      type: Array,
+      required: true
+    }
+  },
+  
+  methods: {
+    getStatusClass(estado) {
+      const classes = {
+        'Activo': 'status-active',
+        'En desarrollo': 'status-development',
+        'Completado': 'status-completed',
+        'En pausa': 'status-paused'
+      }
+      return classes[estado] || 'status-default'
+    },
+    
+    getStatusIcon(estado) {
+      const icons = {
+        'Activo': 'fas fa-circle',
+        'En desarrollo': 'fas fa-code',
+        'Completado': 'fas fa-check-circle',
+        'En pausa': 'fas fa-pause-circle'
+      }
+      return icons[estado] || 'fas fa-info-circle'
+    }
+  }
+}
+</script>
+
+<style scoped>
+.project-achievements {
+  list-style: none;
+  margin: var(--spacing-3) 0;
+  padding: 0;
+}
+
+.project-achievements li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-2);
+}
+
+.project-achievements li i {
+  color: var(--color-success);
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.project-status {
+  margin-bottom: var(--spacing-3);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.status-badge i {
+  font-size: 8px;
+}
+
+.status-active {
+  background: rgba(56, 161, 105, 0.1);
+  color: var(--color-success);
+}
+
+.status-active i {
+  animation: pulse 2s infinite;
+}
+
+.status-development {
+  background: rgba(0, 212, 170, 0.1);
+  color: var(--metgo-primary);
+}
+
+.status-completed {
+  background: rgba(49, 130, 206, 0.1);
+  color: var(--color-info);
+}
+
+.status-paused {
+  background: rgba(214, 158, 46, 0.1);
+  color: var(--color-warning);
+}
+
+.project-links {
+  display: flex;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+}
+
+.project-link.github {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.project-link.github:hover {
+  border-color: var(--metgo-primary);
+  color: var(--metgo-primary);
+  background: var(--metgo-gradient-glow);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+</style>
+24. src/components/cv/CVBrand.vue
+vue
+<template>
+  <footer class="cv-footer">
+    <div class="cv-footer-brand">
+      <!-- Logo -->
+      <div class="cv-footer-logo">
+        <span class="logo-icon">
+          <i class="fas fa-cube"></i>
+        </span>
+        <span class="logo-text">{{ brand.name }}</span>
+        <span class="logo-tagline">{{ brand.tagline }}</span>
+      </div>
+      
+      <!-- Website -->
+      <a 
+        :href="brand.website" 
+        target="_blank" 
+        class="cv-footer-website"
+      >
+        <i class="fas fa-globe"></i>
+        {{ brand.website.replace('https://www.', '') }}
+      </a>
+      
+      <!-- Generated Date -->
+      <p class="cv-footer-date">
+        CV generado el {{ formattedDate }}
+      </p>
+    </div>
+    
+    <!-- QR Code Placeholder (optional) -->
+    <div class="cv-footer-qr" v-if="showQR">
+      <div class="qr-placeholder">
+        <i class="fas fa-qrcode"></i>
+        <span>Escanea para ver online</span>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<script>
+import { computed } from 'vue'
+
+export default {
+  name: 'CVBrand',
+  
+  props: {
+    brand: {
+      type: Object,
+      required: true
+    },
+    showQR: {
+      type: Boolean,
+      default: false
+    }
+  },
+  
+  setup() {
+    const formattedDate = computed(() => {
+      const options = { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      }
+      return new Date().toLocaleDateString('es-CL', options)
+    })
+    
+    return { formattedDate }
+  }
+}
+</script>
+
+<style scoped>
+.cv-footer {
+  margin-top: var(--spacing-10);
+  padding-top: var(--spacing-6);
+  border-top: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
+.cv-footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.cv-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-2);
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--metgo-gradient);
+  border-radius: var(--radius-md);
+  color: white;
+  font-size: var(--font-size-sm);
+}
+
+.logo-text {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-extrabold);
+  background: var(--metgo-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo-tagline {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding-left: var(--spacing-2);
+  border-left: 2px solid var(--metgo-primary);
+}
+
+.cv-footer-website {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--metgo-gradient-glow);
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--metgo-primary);
+  transition: var(--transition-fast);
+}
+
+.cv-footer-website:hover {
+  background: var(--metgo-gradient);
+  color: white;
+  text-decoration: none;
+  box-shadow: var(--shadow-metgo);
+}
+
+.cv-footer-date {
+  margin-top: var(--spacing-3);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+.cv-footer-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qr-placeholder {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-1);
+  background: var(--color-bg-tertiary);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-xs);
+  text-align: center;
+}
+
+.qr-placeholder i {
+  font-size: var(--font-size-2xl);
+  color: var(--metgo-primary);
+}
+
+@media (max-width: 768px) {
+  .cv-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .cv-footer-logo {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .logo-tagline {
+    border-left: none;
+    padding-left: 0;
+    width: 100%;
+    margin-top: var(--spacing-1);
+  }
+}
+</style>
+🛠️ COMPONENTES UI REUTILIZABLES
+25. src/components/ui/BaseButton.vue
+vue
+<template>
+  <button 
+    :class="['btn', `btn-${variant}`, { 'btn-loading': loading }]"
+    :disabled="disabled || loading"
+    @click="$emit('click', $event)"
+  >
+    <span v-if="loading" class="btn-spinner"></span>
+    <i v-else-if="icon" :class="icon"></i>
+    <span v-if="$slots.default" class="btn-text">
+      <slot></slot>
+    </span>
+  </button>
+</template>
+
+<script>
+export default {
+  name: 'BaseButton',
+  
+  props: {
+    variant: {
+      type: String,
+      default: 'primary',
+      validator: (value) => ['primary', 'secondary', 'ghost', 'danger'].includes(value)
+    },
+    icon: {
+      type: String,
+      default: null
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
+  
+  emits: ['click']
+}
+</script>
+
+<style scoped>
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-5);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-normal);
+  white-space: nowrap;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn-primary {
+  background: var(--metgo-gradient);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 212, 170, 0.4);
+}
+
+.btn-secondary {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--metgo-primary);
+  color: var(--metgo-primary);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--color-bg-tertiary);
+  color: var(--metgo-primary);
+}
+
+.btn-danger {
+  background: var(--color-error);
+  color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #c53030;
+}
+
+.btn-loading {
+  pointer-events: none;
+}
+
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+</style>
+26. src/components/ui/BaseCard.vue
+vue
+<template>
+  <div 
+    :class="['card', { 'card-hoverable': hoverable, 'card-highlighted': highlighted }]"
+  >
+    <div v-if="$slots.header" class="card-header">
+      <slot name="header"></slot>
+    </div>
+    
+    <div class="card-body">
+      <slot></slot>
+    </div>
+    
+    <div v-if="$slots.footer" class="card-footer">
+      <slot name="footer"></slot>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'BaseCard',
+  
+  props: {
+    hoverable: {
+      type: Boolean,
+      default: false
+    },
+    highlighted: {
+      type: Boolean,
+      default: false
+    }
+  }
+}
+</script>
+
+<style scoped>
+.card {
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: var(--transition-normal);
+}
+
+.card-hoverable:hover {
+  border-color: var(--metgo-primary);
+  box-shadow: var(--shadow-metgo);
+  transform: translateY(-4px);
+}
+
+.card-highlighted {
+  border: 2px solid var(--metgo-primary);
+  background: var(--metgo-gradient-glow);
+}
+
+.card-header {
+  padding: var(--spacing-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card-body {
+  padding: var(--spacing-4);
+}
+
+.card-footer {
+  padding: var(--spacing-4);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+}
+</style>
+27. src/components/ui/LoadingSpinner.vue
+vue
+<template>
+  <div :class="['spinner-container', `spinner-${size}`]">
+    <div class="spinner">
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+    </div>
+    <p v-if="text" class="spinner-text">{{ text }}</p>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'LoadingSpinner',
+  
+  props: {
+    size: {
+      type: String,
+      default: 'md',
+      validator: (value) => ['sm', 'md', 'lg'].includes(value)
+    },
+    text: {
+      type: String,
+      default: null
+    }
+  }
+}
+</script>
+
+<style scoped>
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+}
+
+.spinner {
+  position: relative;
+}
+
+.spinner-sm .spinner {
+  width: 24px;
+  height: 24px;
+}
+
+.spinner-md .spinner {
+  width: 40px;
+  height: 40px;
+}
+
+.spinner-lg .spinner {
+  width: 60px;
+  height: 60px;
+}
+
+.spinner-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-top-color: var(--metgo-primary);
+  border-radius: 50%;
+  animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.spinner-ring:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.spinner-ring:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.spinner-ring:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+.spinner-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
+28. src/components/ui/SkillTag.vue
+vue
+<template>
+  <span 
+    :class="['skill-tag', `skill-tag-${variant}`, { 'skill-tag-clickable': clickable }]"
+    @click="clickable && $emit('click', $event)"
+  >
+    <i v-if="icon" :class="icon"></i>
+    <slot></slot>
+    <i v-if="certified" class="fas fa-certificate certified-icon" title="Certificado"></i>
+  </span>
+</template>
+
+<script>
+export default {
+  name: 'SkillTag',
+  
+  props: {
+    variant: {
+      type: String,
+      default: 'default',
+      validator: (value) => ['default', 'primary', 'success', 'info'].includes(value)
+    },
+    icon: {
+      type: String,
+      default: null
+    },
+    certified: {
+      type: Boolean,
+      default: false
+    },
+    clickable: {
+      type: Boolean,
+      default: false
+    }
+  },
+  
+  emits: ['click']
+}
+</script>
+
+<style scoped>
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-3);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  transition: var(--transition-fast);
+}
+
+.skill-tag-clickable {
+  cursor: pointer;
+}
+
+.skill-tag-clickable:hover {
+  border-color: var(--metgo-primary);
+  color: var(--metgo-primary);
+}
+
+.skill-tag-primary {
+  background: var(--metgo-gradient-glow);
+  border-color: rgba(0, 212, 170, 0.3);
+  color: var(--metgo-primary);
+}
+
+.skill-tag-success {
+  background: rgba(56, 161, 105, 0.1);
+  border-color: rgba(56, 161, 105, 0.3);
+  color: var(--color-success);
+}
+
+.skill-tag-info {
+  background: rgba(49, 130, 206, 0.1);
+  border-color: rgba(49, 130, 206, 0.3);
+  color: var(--color-info);
+}
+
+.certified-icon {
+  color: var(--color-success);
+  font-size: 10px;
+}
+</style>
+📦 UTILIDADES
+29. src/utils/formatters.js
+javascript
+/**
+ * METGO_3D VIRTUALIZE - Utility Formatters
+ */
+
+/**
+ * Format date to locale string
+ * @param {Date|string} date 
+ * @param {string} locale 
+ * @returns {string}
+ */
+export function formatDate(date, locale = 'es-CL') {
+  const options = { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  }
+  return new Date(date).toLocaleDateString(locale, options)
+}
+
+/**
+ * Format date to short format
+ * @param {Date|string} date 
+ * @returns {string}
+ */
+export function formatDateShort(date) {
+  const options = { 
+    year: 'numeric', 
+    month: 'short'
+  }
+  return new Date(date).toLocaleDateString('es-CL', options)
+}
+
+/**
+ * Format phone number
+ * @param {string} phone 
+ * @returns {string}
+ */
+export function formatPhone(phone) {
+  const cleaned = phone.replace(/\D/g, '')
+  if (cleaned.length === 11 && cleaned.startsWith('56')) {
+    return `+${cleaned.slice(0, 2)} ${cleaned.slice(2, 3)} ${cleaned.slice(3, 7)} ${cleaned.slice(7)}`
+  }
+  return phone
+}
+
+/**
+ * Truncate text with ellipsis
+ * @param {string} text 
+ * @param {number} length 
+ * @returns {string}
+ */
+export function truncate(text, length = 100) {
+  if (text.length <= length) return text
+  return text.slice(0, length).trim() + '...'
+}
+
+/**
+ * Capitalize first letter
+ * @param {string} text 
+ * @returns {string}
+ */
+export function capitalize(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase()
+}
+
+/**
+ * Format skill level to text
+ * @param {number} level 
+ * @returns {string}
+ */
+export function formatSkillLevel(level) {
+  if (level >= 90) return 'Experto'
+  if (level >= 75) return 'Avanzado'
+  if (level >= 50) return 'Intermedio'
+  if (level >= 25) return 'Básico'
+  return 'Principiante'
+}
+
+/**
+ * Generate initials from name
+ * @param {string} name 
+ * @returns {string}
+ */
+export function getInitials(name) {
+  return name
+    .split(' ')
+    .map(word => word.charAt(0))
+    .join('')
+    .toUpperCase()
+    .slice(0, 2)
+}
+
+/**
+ * Format file size
+ * @param {number} bytes 
+ * @returns {string}
+ */
+export function formatFileSize(bytes) {
+  if (bytes === 0) return '0 Bytes'
+  const k = 1024
+  const sizes = ['Bytes', 'KB', 'MB', 'GB']
+  const i = Math.floor(Math.log(bytes) / Math.log(k))
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
+}
+30. src/utils/validators.js
+javascript
+/**
+ * METGO_3D VIRTUALIZE - Validators
+ */
+
+/**
+ * Validate email format
+ * @param {string} email 
+ * @returns {boolean}
+ */
+export function isValidEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return regex.test(email)
+}
+
+/**
+ * Validate Chilean phone number
+ * @param {string} phone 
+ * @returns {boolean}
+ */
+export function isValidChileanPhone(phone) {
+  const cleaned = phone.replace(/\D/g, '')
+  return cleaned.length === 11 && cleaned.startsWith('569')
+}
+
+/**
+ * Validate URL format
+ * @param {string} url 
+ * @returns {boolean}
+ */
+export function isValidUrl(url) {
+  try {
+    new URL(url)
+    return true
+  } catch {
+    return false
+  }
+}
+
+/**
+ * Validate LinkedIn URL
+ * @param {string} url 
+ * @returns {boolean}
+ */
+export function isValidLinkedIn(url) {
+  return isValidUrl(url) && url.includes('linkedin.com')
+}
+
+/**
+ * Validate GitHub URL
+ * @param {string} url 
+ * @returns {boolean}
+ */
+export function isValidGitHub(url) {
+  return isValidUrl(url) && url.includes('github.com')
+}
+
+/**
+ * Check if string is not empty
+ * @param {string} value 
+ * @returns {boolean}
+ */
+export function isNotEmpty(value) {
+  return value !== null && value !== undefined && value.trim() !== ''
+}
+
+/**
+ * Validate skill level (0-100)
+ * @param {number} level 
+ * @returns {boolean}
+ */
+export function isValidSkillLevel(level) {
+  return typeof level === 'number' && level >= 0 && level <= 100
+}
+📄 ARCHIVOS ADICIONALES
+31. .gitignore
+gitignore
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build
+dist/
+dist-ssr/
+*.local
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+*.tgz
+.cache/
+32. README.md
+markdown
+# 📄 METGO_3D VIRTUALIZE - CV Generator
+
+![Vue.js](https://img.shields.io/badge/Vue.js-3.4-42b883?logo=vue.js)
+![License](https://img.shields.io/badge/License-MIT-blue)
+![Status](https://img.shields.io/badge/Status-Active-00d4aa)
+
+> Generador de CV Profesional desarrollado con Vue.js 3, con exportación a PDF y diseño corporativo METGO_3D.
+
+## 🌐 Demo
+
+- **Web**: [metgo3d.com](https://www.metgo3d.com)
+- **Portafolio**: [miguellucero123.github.io/MP](https://miguellucero123.github.io/MP/)
+
+## ✨ Características
+
+- 🎨 **Diseño Corporativo**: Branding METGO_3D VIRTUALIZE
+- 📱 **Responsive**: Adaptable a cualquier dispositivo
+- 🌙 **Temas**: Claro, Oscuro y METGO
+- 📥 **Exportar PDF**: Descarga de alta calidad
+- 🖨️ **Optimizado para impresión**: Estilos específicos para print
+- ⚡ **Rendimiento**: Construido con Vite
+- 🧩 **Modular**: Componentes reutilizables
+
+## 🚀 Instalación
+
+```bash
+# Clonar repositorio
+git clone https://github.com/miguellucero123/metgo3d-cv-generator.git
+
+# Entrar al directorio
+cd metgo3d-cv-generator
+
+# Instalar dependencias
+npm install
+
+# Iniciar desarrollo
+npm run dev
+
+# Construir para producción
+npm run build
+📁 Estructura
+text
+src/
+├── assets/styles/     # Estilos CSS
+├── components/
+│   ├── cv/           # Componentes del CV
+│   ├── layout/       # Header, Footer, etc.
+│   └── ui/           # Componentes reutilizables
+├── composables/      # Lógica reutilizable
+├── data/             # Datos del CV
+└── utils/            # Utilidades
+🎨 Personalización
+Edita src/data/cvData.js para personalizar tu CV:
+
+javascript
+export const cvData = {
+  personal: {
+    nombre: "TU NOMBRE",
+    titulo: "Tu Título Profesional",
+    // ...
+  },
+  // ...
+}
+📦 Tecnologías
+Vue.js 3 - Framework progresivo
+Vite - Build tool
+html2pdf.js - Generación de PDF
+Font Awesome - Iconos
+Google Fonts - Tipografías (Inter, Space Grotesk)
+👤 Autor
+Miguel Ignacio Lucero Gatica
+
+🌐 Web: metgo3d.com
+💼 LinkedIn: /in/metgo3d
+💻 GitHub: @miguellucero123
+📧 Email: miguellucerogatica@gmail.com
+📄 Licencia
+Este proyecto está bajo la Licencia MIT. Ver LICENSE para más detalles.
+
+METGO_3D VIRTUALIZE
+Soluciones tecnológicas para visualización y análisis de datos
+
+```
+🚀 INSTRUCCIONES DE DESPLIEGUE
+Instalación Rápida
+bash
+# 1. Crear proyecto con Vite
+npm create vite@latest metgo3d-cv-generator -- --template vue
+
+# 2. Entrar al directorio
+cd metgo3d-cv-generator
+
+# 3. Instalar dependencias adicionales
+npm install html2pdf.js
+
+# 4. Copiar todos los archivos proporcionados
+
+# 5. Ejecutar en desarrollo
+npm run dev
+
+# 6. Construir para producción
+npm run build
+
+# 7. Desplegar en GitHub Pages
+npm run deploy
+Despliegue en GitHub Pages
+bash
+# Instalar gh-pages
+npm install --save-dev gh-pages
+
+# Agregar script en package.json
+# "deploy": "npm run build && gh-pages -d dist"
+
+# Ejecutar deploy
+npm run deploy
+🎯 MEJORAS PROPUESTAS
+Fase 1: Funcionalidades Básicas ✅
+ Estructura Vue.js completa
+ Diseño corporativo METGO_3D
+ Exportación a PDF
+ Sistema de temas (claro/oscuro/metgo)
+ Responsive design
+ Estilos de impresión
+Fase 2: Mejoras Avanzadas 🔄
+ Editor Visual: Formulario para editar CV en tiempo real
+ Múltiples Plantillas: Diferentes diseños de CV
+ Código QR: Generar QR con enlace al portafolio
+ Animaciones al Scroll: Efectos de entrada
+ Modo Presentación: Vista de diapositivas
+ Internacionalización: Soporte multiidioma
+Fase 3: Integración 🚧
+ API Backend: Guardar CVs en base de datos
+ Autenticación: Login con redes sociales
+ Analytics: Seguimiento de descargas
+ Compartir: Enlaces públicos
+ Integración LinkedIn: Importar datos

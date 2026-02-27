@@ -1,0 +1,26 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno (contienen secretos)
+.env
+.env.local
+.env.*.local
+
+# Build / dist
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Caché
+.cache/
+.parcel-cache/
