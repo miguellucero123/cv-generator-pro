@@ -40,6 +40,22 @@ if (process.env.NODE_ENV === 'development') {
 app.use(passport.initialize());
 app.use('/api', generalLimiter);
 
+app.get('/', (req, res) => {
+  res.json({
+    name: 'CV Generator API',
+    version: '2.0.0',
+    status: 'ok',
+    docs: '/api-docs',
+    health: '/health',
+    endpoints: {
+      auth: '/api/auth',
+      cvs: '/api/cvs',
+      share: '/api/share',
+      analytics: '/api/analytics'
+    }
+  });
+});
+
 app.get('/health', (req, res) => {
   res.json({
     status: 'ok',

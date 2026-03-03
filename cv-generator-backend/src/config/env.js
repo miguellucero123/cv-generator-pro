@@ -12,6 +12,12 @@ const requiredVars = [
   'PORT'
 ];
 
+/** Si SKIP_MONGODB=true, MongoDB no es requerido */
+const getRequiredVars = () =>
+  process.env.SKIP_MONGODB === 'true'
+    ? requiredVars.filter((v) => v !== 'MONGODB_URI')
+    : requiredVars;
+
 const optionalVars = [
   'GOOGLE_CLIENT_ID',
   'GOOGLE_CLIENT_SECRET',
@@ -38,7 +44,7 @@ function validateEnv() {
   const warnings = [];
 
   // Validar variables requeridas
-  requiredVars.forEach((varName) => {
+  getRequiredVars().forEach((varName) => {
     if (!process.env[varName]) {
       missing.push(varName);
     }
@@ -174,7 +180,7 @@ function printConfigStatus() {
 
 Ambiente:        ${config.nodeEnv.toUpperCase()}
 Puerto:          ${config.port}
-Base de datos:   ${config.mongodbUri.includes('localhost') ? '🔴 Local' : '🔵 Cloud'}
+Base de datos:   ${process.env.SKIP_MONGODB === 'true' ? '⏭️  Omitido' : (config.mongodbUri || '').includes('localhost') ? '🔴 Local' : '🔵 Cloud'}
 
 Integraciones:
   • Google OAuth:  ${config.google.enabled ? '✅ Activado' : '⚠️  Desactivado'}

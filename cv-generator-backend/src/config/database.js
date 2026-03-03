@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
+  if (process.env.SKIP_MONGODB === 'true') {
+    console.log('⏭️  MongoDB omitido (SKIP_MONGODB=true)');
+    return;
+  }
+
   try {
     const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/cv-generator');
 
