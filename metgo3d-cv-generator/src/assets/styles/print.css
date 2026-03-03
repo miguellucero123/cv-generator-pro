@@ -2,8 +2,11 @@
  * METGO_3D VIRTUALIZE - Print & PDF styles
  */
 @media print {
-  /* Ocultar toda la UI de navegación y controles */
+  /* Ocultar toda la UI de navegación y controles - reglas agresivas */
   .control-panel,
+  aside.control-panel,
+  aside.cv-section.control-panel,
+  .cv-section.control-panel,
   .btn-editor,
   .btn-pdf,
   .btn-toggle,
@@ -23,12 +26,32 @@
   .header,
   .footer,
   nav,
-  button,
-  .no-print {
+  .no-print,
+  .collapsed-icons,
+  .icon-btn,
+  .control-panel__group,
+  .control-panel__subtitle {
     display: none !important;
     visibility: hidden !important;
+    width: 0 !important;
     height: 0 !important;
+    max-width: 0 !important;
+    max-height: 0 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
     overflow: hidden !important;
+    position: absolute !important;
+    left: -99999px !important;
+    opacity: 0 !important;
+  }
+  
+  /* Ocultar todos los botones excepto enlaces dentro del CV */
+  button {
+    display: none !important;
+    visibility: hidden !important;
   }
 
   /* Reset completo para impresión */
@@ -66,7 +89,6 @@
   .app,
   .app-main,
   #app,
-  .layout,
   .public-cv,
   .auth-layout {
     display: block !important;
@@ -80,6 +102,23 @@
     background: white !important;
   }
 
+  /* Forzar layout de una sola columna - anular grid */
+  .layout,
+  section.layout,
+  .layout.panel-collapsed {
+    display: block !important;
+    grid-template-columns: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    background: white !important;
+    gap: 0 !important;
+  }
+
   .cv-preview-wrapper {
     width: 100% !important;
     margin: 0 !important;
@@ -87,6 +126,25 @@
     overflow: visible !important;
     min-height: auto !important;
     height: auto !important;
+  }
+
+  /* Ocultar completamente todos los aside (control panels) */
+  aside {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    max-width: 0 !important;
+    max-height: 0 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -99999px !important;
+    opacity: 0 !important;
   }
   
   /* Panel editor oculto completamente */
