@@ -140,11 +140,22 @@ const handleImport = (e) => {
   box-shadow: -8px 0 24px rgba(0,0,0,0.4);
   display: flex;
   flex-direction: column;
-  z-index: 1000;
+  z-index: 9999;
   transition: right 0.3s ease;
   overflow: hidden;
 }
 .cv-editor.is-open { right: 0; }
+
+/* Asegurar que los botones sean clickeables */
+.cv-editor button,
+.cv-editor input,
+.cv-editor select,
+.cv-editor textarea,
+.cv-editor label {
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+}
 
 .editor-header {
   display: flex;

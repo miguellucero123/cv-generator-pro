@@ -29,6 +29,8 @@ defineEmits(['change'])
   scrollbar-width: thin;
   scrollbar-color: #334155 transparent;
   padding-bottom: 2px;
+  flex-shrink: 0;
+  min-height: 44px;
 }
 .editor-tabs::-webkit-scrollbar { height: 4px; }
 .editor-tabs::-webkit-scrollbar-track { background: transparent; }
