@@ -1,12 +1,15 @@
 /**
  * METGO_3D VIRTUALIZE - Print & PDF styles
+ * Optimizado para evitar páginas en blanco
  */
 @media print {
-  /* Ocultar toda la UI de navegación y controles - reglas agresivas */
+  /* ========================================
+   * 1. OCULTAR TODA LA UI
+   * ======================================== */
   .control-panel,
+  aside,
   aside.control-panel,
-  aside.cv-section.control-panel,
-  .cv-section.control-panel,
+  aside.cv-section,
   .btn-editor,
   .btn-pdf,
   .btn-toggle,
@@ -26,6 +29,7 @@
   .header,
   .footer,
   nav,
+  button,
   .no-print,
   .collapsed-icons,
   .icon-btn,
@@ -45,264 +49,246 @@
     overflow: hidden !important;
     position: absolute !important;
     left: -99999px !important;
+    top: -99999px !important;
     opacity: 0 !important;
-  }
-  
-  /* Ocultar todos los botones excepto enlaces dentro del CV */
-  button {
-    display: none !important;
-    visibility: hidden !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
   }
 
-  /* Reset completo para impresión */
+  /* ========================================
+   * 2. RESET TOTAL DE CONTENEDORES
+   * ======================================== */
   *, *::before, *::after {
-    box-sizing: border-box;
+    box-sizing: border-box !important;
+    max-height: none !important;
   }
 
-  html {
-    font-size: 12pt !important;
-  }
-
-  html, body {
-    background: white !important;
-    color: black !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-    height: auto !important;
-    overflow: visible !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  /* Forzar fondo oscuro del CV a verse correctamente */
-  .cv-preview,
-  .cv-section {
-    background: #1a1f2e !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  /* Forzar altura automática en todos los contenedores para evitar páginas en blanco */
-  .main-layout,
-  .home-view,
-  .app,
-  .app-main,
-  #app,
-  .public-cv,
-  .auth-layout {
+  html, body, #app, .app, .app-main, .main-layout, .home-view, 
+  .public-cv, .auth-layout, .layout, section.layout {
     display: block !important;
     width: 100% !important;
     max-width: 100% !important;
-    min-height: auto !important;
     height: auto !important;
-    padding: 0 !important;
+    min-height: 0 !important;
+    max-height: none !important;
     margin: 0 !important;
+    padding: 0 !important;
     overflow: visible !important;
     background: white !important;
-  }
-
-  /* Forzar layout de una sola columna - anular grid */
-  .layout,
-  section.layout,
-  .layout.panel-collapsed {
-    display: block !important;
+    border: none !important;
+    box-shadow: none !important;
+    flex: none !important;
     grid-template-columns: none !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-height: auto !important;
-    height: auto !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow: visible !important;
-    background: white !important;
     gap: 0 !important;
   }
 
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* ========================================
+   * 3. CV PREVIEW - EL CONTENIDO PRINCIPAL
+   * ======================================== */
   .cv-preview-wrapper {
+    display: block !important;
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
     overflow: visible !important;
-    min-height: auto !important;
     height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
   }
 
-  /* Ocultar completamente todos los aside (control panels) */
-  aside {
-    display: none !important;
-    visibility: hidden !important;
-    width: 0 !important;
-    height: 0 !important;
-    max-width: 0 !important;
-    max-height: 0 !important;
-    min-width: 0 !important;
-    min-height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: none !important;
-    overflow: hidden !important;
-    position: absolute !important;
-    left: -99999px !important;
-    opacity: 0 !important;
-  }
-  
-  /* Panel editor oculto completamente */
-  .cv-editor,
-  .editor-panel,
-  .side-panel {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-    min-height: 0 !important;
-    max-height: 0 !important;
-    overflow: hidden !important;
-    position: absolute !important;
-    left: -9999px !important;
-  }
-
-  .cv-preview {
-    box-shadow: none !important;
-    border: none !important;
-    border-radius: 0 !important;
-    margin: 0 !important;
-    padding: 8px !important;
-    max-width: 100% !important;
+  .cv-preview,
+  section.cv-section.cv-preview {
+    display: block !important;
     width: 100% !important;
+    margin: 0 !important;
+    padding: 0.5cm !important;
     overflow: visible !important;
-    font-size: 10pt !important;
-  }
-  
-  /* Eliminar bordes redondeados y sombras */
-  .cv-section {
-    border-radius: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
     box-shadow: none !important;
     border: none !important;
-  }
-  
-  /* Compactar sección de marca/QR al final */
-  .cv-brand {
-    margin-top: 5px !important;
-    padding: 5px !important;
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
+    border-radius: 0 !important;
+    background: #0f172a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
-  /* Convertir columnas a layout de 2 columnas más compacto */
+  /* ========================================
+   * 4. LAYOUT DE COLUMNAS COMPACTO
+   * ======================================== */
   .cv-columns {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 10px !important;
+    gap: 0.5cm !important;
     width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .cv-column {
     display: block !important;
     width: 100% !important;
-    margin-bottom: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
   }
 
-  /* Scroll animate no afecta impresión */
   .scroll-animate {
     opacity: 1 !important;
     transform: none !important;
-    margin-bottom: 5px !important;
+    margin-bottom: 0.3cm !important;
   }
 
-  /* Evitar cortes de página en secciones importantes */
-  .cv-section,
-  .cv-block,
+  /* ========================================
+   * 5. TIPOGRAFÍA COMPACTA
+   * ======================================== */
+  html {
+    font-size: 9pt !important;
+  }
+
+  h1 {
+    font-size: 16pt !important;
+    margin-bottom: 0.2cm !important;
+  }
+
+  h2 {
+    font-size: 12pt !important;
+    margin-bottom: 0.15cm !important;
+  }
+
+  h3 {
+    font-size: 10pt !important;
+    margin-bottom: 0.1cm !important;
+  }
+
+  p, li, span {
+    font-size: 9pt !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.05cm !important;
+  }
+
+  /* ========================================
+   * 6. SECCIONES DEL CV
+   * ======================================== */
+  .cv-section:not(.cv-preview):not(.control-panel) {
+    margin-bottom: 0.2cm !important;
+    padding: 0.15cm !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  .cv-header {
+    margin-bottom: 0.3cm !important;
+    padding-bottom: 0.2cm !important;
+    border-bottom: 1px solid #334155 !important;
+  }
+
+  .cv-block {
+    margin-bottom: 0.2cm !important;
+    padding: 0 !important;
+  }
+
+  .cv-brand {
+    margin-top: 0.2cm !important;
+    padding-top: 0.15cm !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    border-top: 1px solid #334155 !important;
+  }
+
+  /* ========================================
+   * 7. ITEMS DE EXPERIENCIA/EDUCACIÓN
+   * ======================================== */
   .cv-exp-item,
   .cv-proj-item,
   .cv-edu-item,
   .experience-item,
   .education-item,
-  .project-item,
-  .skill-category,
-  .cv-header {
+  .project-item {
+    margin-bottom: 0.15cm !important;
+    padding-bottom: 0.1cm !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
-    orphans: 3;
-    widows: 3;
   }
 
-  /* Permitir corte en el contenedor principal */
-  .cv-preview {
-    break-inside: auto !important;
-    page-break-inside: auto !important;
+  /* ========================================
+   * 8. EVITAR SALTOS DE PÁGINA INNECESARIOS
+   * ======================================== */
+  .cv-header,
+  .cv-brand {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
   }
 
-  /* Asegurar que los títulos no queden solos */
   h1, h2, h3, h4 {
     break-after: avoid !important;
     page-break-after: avoid !important;
   }
 
-  /* Configuración de página - Letter (Carta) para compatibilidad */
+  /* Permitir que el contenido principal fluya */
+  .cv-preview {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  /* ========================================
+   * 9. CONFIGURACIÓN DE PÁGINA
+   * ======================================== */
   @page {
-    margin: 0.4cm;
     size: letter portrait;
+    margin: 0.3cm;
   }
 
   @page :first {
-    margin-top: 0.4cm;
+    margin-top: 0.3cm;
   }
 
-  /* Prevenir página en blanco al final */
+  /* ========================================
+   * 10. ELIMINAR ELEMENTOS FANTASMA
+   * ======================================== */
+  body::before,
   body::after,
+  html::before,
   html::after,
+  #app::before,
   #app::after,
+  .app::before,
   .app::after,
-  .main-layout::after {
+  .layout::before,
+  .layout::after,
+  .home-view::before,
+  .home-view::after,
+  .cv-preview::after,
+  .cv-preview-wrapper::after {
     content: none !important;
     display: none !important;
+    width: 0 !important;
+    height: 0 !important;
   }
 
-  /* Remover cualquier espacio extra al final del documento */
+  /* Eliminar cualquier margen/padding al final */
   *:last-child {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
 
-  /* Asegurar que el footer no fuerce espacio extra */
-  .cv-footer,
-  .footer-section {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-    break-after: avoid !important;
-    page-break-after: avoid !important;
-  }
-
-  /* Reducir espaciado para ajustar a una página */
-  .cv-preview {
-    padding: 10px !important;
-    font-size: 11pt !important;
-  }
-  
-  /* Compactar secciones del CV */
-  .cv-section {
-    margin-bottom: 8px !important;
-    padding: 8px !important;
-  }
-  
-  h2 {
-    font-size: 14pt !important;
-    margin-bottom: 6px !important;
-  }
-  
-  h3 {
-    font-size: 12pt !important;
-    margin-bottom: 4px !important;
-  }
-  
-  p, li {
-    margin-bottom: 3px !important;
-    line-height: 1.3 !important;
-  }
-  
-  /* Forzar que todo quepa en el área de impresión */
-  .cv-preview-wrapper,
-  .cv-preview {
-    max-height: none !important;
+  /* ========================================
+   * 11. FORZAR COLORES EXACTOS
+   * ======================================== */
+  .cv-preview *,
+  .cv-header *,
+  .cv-column * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
   }
 }
