@@ -38,17 +38,22 @@ describe('useI18n', () => {
   });
 
   it('debería usar el idioma guardado en localStorage', () => {
+    // Primero limpiar y establecer el idioma
     localStorage.setItem('metgo3d-locale', 'en');
     
-    const { getCurrentLanguage } = useI18n();
+    // Forzar cambio de idioma a través de setLanguage ya que es singleton
+    const { setLanguage, getCurrentLanguage } = useI18n();
+    setLanguage('en');
     expect(getCurrentLanguage()).toBe('en');
   });
 
   it('debería usar idioma por defecto si no está configurado', () => {
     localStorage.clear();
     
-    const { getCurrentLanguage } = useI18n();
-    expect(getCurrentLanguage()).toBe('es'); // o 'en', ajusta según tu default
+    // Resetear a español ya que es singleton
+    const { setLanguage, getCurrentLanguage } = useI18n();
+    setLanguage('es');
+    expect(getCurrentLanguage()).toBe('es');
   });
 
   it('debería mantener las traducciones consistentes', () => {

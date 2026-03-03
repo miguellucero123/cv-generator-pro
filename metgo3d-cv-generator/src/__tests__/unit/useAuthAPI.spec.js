@@ -121,19 +121,17 @@ describe('useAuthAPI', () => {
     });
 
     it('should clear user data even if logout request fails', async () => {
-      mockAPI.post.mockRejectedValue(new Error('Server error'));
+      // La función logout silencia errores de red
+      mockAPI.post.mockImplementationOnce(() => Promise.reject(new Error('Server error')));
 
       setToken('existing-token');
       const auth = useAuthAPI();
       auth.user.value = { id: 1, email: 'user@example.com' };
 
-      // El logout puede fallar pero debe limpiar datos por el finally
-      try {
-        await auth.logout();
-      } catch (error) {
-        // Se espera el error pero los datos deben estar limpios
-      }
+      // Logout completa sin error aunque la petición falle
+      await auth.logout();
 
+      // Los datos deben estar limpios
       expect(getToken()).toBeNull();
       expect(auth.user.value).toBeNull();
     });

@@ -31,6 +31,8 @@ export function useAuthAPI() {
   const logout = async () => {
     try {
       await api.post('/auth/logout')
+    } catch (e) {
+      // Ignorar errores de logout - lo importante es limpiar datos locales
     } finally {
       setToken(null)
       user.value = null
