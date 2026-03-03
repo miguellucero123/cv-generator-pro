@@ -6,14 +6,14 @@
 
     <div class="cv-columns">
       <div class="cv-column">
-        <div class="scroll-animate"><CVProfile :perfil="cvData.perfil" /></div>
-        <div class="scroll-animate"><CVSkills :competencias="cvData.competencias" /></div>
+        <div class="scroll-animate"><CVProfile :perfil="cvData.perfil" :t="t" /></div>
+        <div class="scroll-animate"><CVSkills :competencias="cvData.competencias" :t="t" /></div>
       </div>
 
       <div class="cv-column">
-        <div class="scroll-animate"><CVEducation :educacion="cvData.educacion" /></div>
-        <div class="scroll-animate"><CVExperience :experiencia="cvData.experiencia" /></div>
-        <div class="scroll-animate"><CVProjects :proyectos="cvData.proyectos" /></div>
+        <div class="scroll-animate"><CVEducation :educacion="cvData.educacion" :t="t" /></div>
+        <div class="scroll-animate"><CVExperience :experiencia="cvData.experiencia" :t="t" /></div>
+        <div class="scroll-animate"><CVProjects :proyectos="cvData.proyectos" :t="t" /></div>
       </div>
     </div>
 
@@ -32,7 +32,8 @@ import CVBrand from './CVBrand.vue'
 
 defineProps({
   cvData: { type: Object, required: true },
-  template: { type: String, default: 'modern' }
+  template: { type: String, default: 'modern' },
+  t: { type: Function, default: null }
 })
 </script>
 

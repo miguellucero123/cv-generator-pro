@@ -13,8 +13,10 @@ const availableLocales = [
   { code: 'en', name: 'English', flag: '🇬🇧' }
 ]
 
+// Estado global compartido (singleton)
+const currentLocale = ref(localStorage.getItem(STORAGE_KEY) || 'es')
+
 export function useI18n() {
-  const currentLocale = ref(localStorage.getItem(STORAGE_KEY) || 'es')
   const translations = computed(() => locales[currentLocale.value] || es)
 
   const t = (key, params = {}) => {

@@ -1,8 +1,8 @@
 <template>
   <section class="cv-block">
-    <h3>Proyectos</h3>
+    <h3>{{ t ? t('cv.projects') : 'Proyectos' }}</h3>
     <p v-if="!proyectos?.length" class="cv-text--muted">
-      Agrega tus proyectos desde el editor.
+      {{ t ? t('cv.emptyProjects') : 'Agrega tus proyectos desde el editor.' }}
     </p>
     <ul v-else class="cv-list">
       <li v-for="(proj, idx) in proyectos" :key="idx" class="cv-proj-item">
@@ -21,6 +21,10 @@ defineProps({
     type: Array,
     required: false,
     default: () => []
+  },
+  t: {
+    type: Function,
+    default: null
   }
 })
 </script>

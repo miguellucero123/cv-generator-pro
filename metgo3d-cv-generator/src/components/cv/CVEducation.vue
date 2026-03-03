@@ -1,8 +1,8 @@
 <template>
   <section class="cv-block">
-    <h3>Formación Académica</h3>
+    <h3>{{ t ? t('cv.education') : 'Formación Académica' }}</h3>
     <p v-if="!educacion.length" class="cv-text--muted">
-      Información de educación se mostrará aquí.
+      {{ t ? t('cv.emptyEducation') : 'Información de educación se mostrará aquí.' }}
     </p>
     <ul v-else class="cv-list">
       <li v-for="edu in educacion" :key="edu.titulo">
@@ -18,6 +18,10 @@ defineProps({
   educacion: {
     type: Array,
     default: () => []
+  },
+  t: {
+    type: Function,
+    default: null
   }
 })
 </script>

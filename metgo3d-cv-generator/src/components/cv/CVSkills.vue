@@ -1,6 +1,6 @@
 <template>
   <section class="cv-block">
-    <h3>Competencias Técnicas</h3>
+    <h3>{{ t ? t('cv.skills') : 'Competencias Técnicas' }}</h3>
 
     <div
       v-if="competencias.programacion?.skills?.length"
@@ -24,6 +24,10 @@ defineProps({
   competencias: {
     type: Object,
     required: true
+  },
+  t: {
+    type: Function,
+    default: null
   }
 })
 </script>

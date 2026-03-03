@@ -1,6 +1,6 @@
 <template>
   <section class="cv-block">
-    <h3>Perfil Profesional</h3>
+    <h3>{{ t ? t('cv.profile') : 'Perfil Profesional' }}</h3>
     <p class="cv-text">
       {{ perfil.resumen }}
     </p>
@@ -18,6 +18,10 @@ defineProps({
   perfil: {
     type: Object,
     required: true
+  },
+  t: {
+    type: Function,
+    default: null
   }
 })
 </script>
