@@ -2,26 +2,96 @@
  * METGO_3D VIRTUALIZE - Print & PDF styles
  */
 @media print {
+  /* Ocultar toda la UI de navegación y controles */
   .control-panel,
   .btn-editor,
   .btn-pdf,
+  .btn-toggle,
+  .btn-presentation,
+  .btn-cloud,
+  .btn-landing,
+  .btn-nav,
+  .btn-pres,
   .template-selector,
-  .cv-editor {
+  .cv-editor,
+  .presentation-mode,
+  .landing,
+  .landing-content,
+  .landing-actions,
+  .app-header,
+  .app-footer,
+  .header,
+  .footer,
+  nav,
+  button,
+  .no-print {
     display: none !important;
+  }
+
+  /* Layout para impresión */
+  html, body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .main-layout {
+    display: block !important;
+    min-height: auto !important;
+  }
+
+  .app-main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .home-view {
+    display: block !important;
   }
 
   .layout {
     display: block !important;
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  .cv-preview-wrapper {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .cv-preview {
     box-shadow: none !important;
-    border: 1px solid #e2e8f0 !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+    max-width: 100% !important;
     break-inside: avoid;
   }
 
-  body {
-    background: white !important;
+  /* Asegurar que los colores se impriman */
+  .cv-preview * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Evitar cortes de página en secciones */
+  .cv-section,
+  .experience-item,
+  .education-item,
+  .project-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Configuración de página */
+  @page {
+    margin: 1cm;
+    size: A4;
   }
 
   .app {
