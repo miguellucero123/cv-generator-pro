@@ -131,9 +131,9 @@ const handleImport = (e) => {
 .cv-editor {
   position: fixed;
   top: 0;
-  right: -520px;
-  width: 500px;
-  max-width: 100%;
+  right: -560px;
+  width: 540px;
+  max-width: 100vw;
   height: 100vh;
   background: #0f172a;
   border-left: 1px solid #334155;
@@ -142,6 +142,7 @@ const handleImport = (e) => {
   flex-direction: column;
   z-index: 1000;
   transition: right 0.3s ease;
+  overflow: hidden;
 }
 .cv-editor.is-open { right: 0; }
 
