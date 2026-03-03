@@ -12,8 +12,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  width: 100%;
 }
 </style>

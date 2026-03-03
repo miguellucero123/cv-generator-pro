@@ -203,29 +203,34 @@ onMounted(() => {
 /* Landing Page Styles */
 .home-view {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .landing {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 60vh;
-  padding: 2rem;
+  flex: 1;
+  padding: 2rem 1rem;
 }
 
 .landing-content {
   text-align: center;
-  max-width: 600px;
+  max-width: 550px;
+  width: 100%;
 }
 
 .landing-title {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   color: #00d4aa;
   margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
 .landing-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: #94a3b8;
   margin-bottom: 2rem;
 }
@@ -235,6 +240,9 @@ onMounted(() => {
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin-bottom: 2rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .feature-card {

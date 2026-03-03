@@ -47,3 +47,23 @@ onMounted(() => {
   auth.initFromToken()
 })
 </script>
+
+<style scoped>
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+</style>
