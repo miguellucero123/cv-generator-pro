@@ -26,75 +26,130 @@
   button,
   .no-print {
     display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
   }
 
-  /* Layout para impresión */
+  /* Reset completo para impresión */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 12pt !important;
+  }
+
   html, body {
     background: white !important;
+    color: black !important;
     margin: 0 !important;
     padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  .main-layout {
-    display: block !important;
-    min-height: auto !important;
+  /* Forzar fondo oscuro del CV a verse correctamente */
+  .cv-preview,
+  .cv-section {
+    background: #1a1f2e !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
+  .main-layout,
+  .home-view,
+  .app,
   .app-main {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    height: auto !important;
     padding: 0 !important;
     margin: 0 !important;
-    max-width: 100% !important;
-  }
-
-  .home-view {
-    display: block !important;
+    overflow: visible !important;
   }
 
   .layout {
     display: block !important;
-    grid-template-columns: 1fr !important;
-    gap: 0 !important;
+    width: 100% !important;
   }
 
   .cv-preview-wrapper {
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
+    overflow: visible !important;
   }
 
   .cv-preview {
     box-shadow: none !important;
     border: none !important;
     margin: 0 !important;
-    padding: 1rem !important;
+    padding: 15px !important;
     max-width: 100% !important;
-    break-inside: avoid;
+    width: 100% !important;
+    overflow: visible !important;
   }
 
-  /* Asegurar que los colores se impriman */
-  .cv-preview * {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+  /* Convertir columnas a layout lineal para mejor impresión */
+  .cv-columns {
+    display: block !important;
+    width: 100% !important;
   }
 
-  /* Evitar cortes de página en secciones */
+  .cv-column {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Scroll animate no afecta impresión */
+  .scroll-animate {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Evitar cortes de página en secciones importantes */
   .cv-section,
+  .cv-block,
+  .cv-exp-item,
+  .cv-proj-item,
+  .cv-edu-item,
   .experience-item,
   .education-item,
-  .project-item {
-    break-inside: avoid;
-    page-break-inside: avoid;
+  .project-item,
+  .skill-category,
+  .cv-header {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Permitir corte en el contenedor principal */
+  .cv-preview {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  /* Asegurar que los títulos no queden solos */
+  h1, h2, h3, h4 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
   }
 
   /* Configuración de página */
   @page {
-    margin: 1cm;
-    size: A4;
+    margin: 0.5cm;
+    size: A4 portrait;
   }
 
-  .app {
-    max-width: 100%;
+  @page :first {
+    margin-top: 0.5cm;
   }
 }
